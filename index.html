@@ -31,8 +31,33 @@
     font-size: 17px;
     line-height: 1.75;
     color: var(--text);
-    background: var(--bg);
+    background: linear-gradient(135deg, #241a3e, #312450, #3a1f52, #2a1b4a);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: bgShift 22s ease infinite;
   }
+  @keyframes bgShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  /* Floating glow blobs */
+  body::before, body::after {
+    content: ""; position: fixed; border-radius: 50%; z-index: 0;
+    filter: blur(90px); opacity: .35; pointer-events: none;
+  }
+  body::before {
+    width: 480px; height: 480px; top: -120px; right: -80px;
+    background: radial-gradient(circle, #b74e91, transparent 70%);
+    animation: float1 18s ease-in-out infinite;
+  }
+  body::after {
+    width: 520px; height: 520px; bottom: -160px; left: 180px;
+    background: radial-gradient(circle, #5e42a6, transparent 70%);
+    animation: float2 24s ease-in-out infinite;
+  }
+  @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-60px,80px); } }
+  @keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(80px,-60px); } }
   h1, h2, h3 { font-family: "Raleway", sans-serif; color: var(--heading); letter-spacing: 0.02em; }
   a { color: var(--accent); text-decoration: none; transition: color .2s; }
   a:hover { color: var(--accent-2); }
@@ -76,16 +101,21 @@
   #sidebar .copyright { text-align: center; color: var(--muted); font-size: .72rem; margin-top: 1rem; }
 
   /* ---------- Content ---------- */
-  #main { margin-left: var(--sidebar-w); }
+  #main { margin-left: var(--sidebar-w); position: relative; z-index: 1; }
   section { padding: 5rem 6vw; max-width: 1000px; }
-  section:nth-of-type(even) { background: #2a1f45; }
-  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; }
+  section:nth-of-type(even) { background: rgba(255,255,255,.03); backdrop-filter: blur(2px); }
+  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; text-shadow: 0 0 18px rgba(209,122,176,.5); }
   section h2 { font-size: 2rem; margin: .3rem 0 1.8rem; position: relative; }
   section h2::after { content: ""; display: block; width: 48px; height: 4px; margin-top: .6rem; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 
   /* Hero */
   #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-  #intro h2 { font-size: 3rem; }
+  #intro h2 {
+    font-size: 3.4rem; line-height: 1.1;
+    background: linear-gradient(120deg, #ffffff 20%, #d17ab0 55%, #8b6bd0 90%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
   #intro h2::after { display: none; }
   #intro .lead { font-size: 1.35rem; color: var(--accent-2); font-weight: 400; margin: 0 0 1.5rem; }
   .btn {
@@ -113,10 +143,11 @@
   /* Projects */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
   .card {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+    background: rgba(255,255,255,.05); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 16px;
     padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
   }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.35); border-color: rgba(209,122,176,.5); }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 45px rgba(0,0,0,.4), 0 0 30px rgba(183,78,145,.25); border-color: rgba(209,122,176,.6); }
   .card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
   .card p { margin: 0 0 1rem; font-size: .95rem; }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
@@ -133,11 +164,15 @@
 
   /* Contact */
   .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
-  .contact-links a { display: flex; flex-direction: column; padding: 1.2rem 1.4rem; border: 1px solid var(--border); border-radius: 12px; color: var(--text); transition: border-color .2s, transform .2s; }
-  .contact-links a:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-links a { display: flex; flex-direction: column; padding: 1.2rem 1.4rem; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(255,255,255,.04); backdrop-filter: blur(10px); color: var(--text); transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .contact-links a:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 0 24px rgba(183,78,145,.3); }
   .contact-links .label { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
   .contact-links .value { color: var(--heading); font-weight: 600; word-break: break-all; }
   .fin { text-align: center; color: var(--muted); margin-top: 3rem; font-family: "Raleway", sans-serif; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 
   /* Mobile */
   #menu-toggle { display: none; }
@@ -407,6 +442,19 @@
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
   sections.forEach(s => s && observer.observe(s));
+
+  // Scroll-reveal animations
+  const revealTargets = document.querySelectorAll('section h2, .section-tag, #intro p, #intro .btn, .entry, .card, .skill-block, .certs, .contact-links a, .fin');
+  revealTargets.forEach(el => el.classList.add('reveal'));
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), (i % 6) * 80);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach(el => revealObserver.observe(el));
 </script>
 
 </body>

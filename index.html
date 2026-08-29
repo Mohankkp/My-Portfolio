@@ -31,15 +31,8 @@
     font-size: 17px;
     line-height: 1.75;
     color: var(--text);
-    background: linear-gradient(135deg, #241a3e, #312450, #3a1f52, #2a1b4a);
-    background-size: 400% 400%;
-    background-attachment: fixed;
-    animation: bgShift 22s ease infinite;
-  }
-  @keyframes bgShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    background-color: #312450;
+    transition: background-color 1s ease;
   }
   /* Floating glow blobs */
   body::before, body::after {
@@ -433,11 +426,20 @@
   // Active section highlighting
   const links = document.querySelectorAll('#sidebar nav a');
   const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const bgMap = {
+    intro:      '#312450',
+    experience: '#3e4094',
+    education:  '#493382',
+    projects:   '#5052b5',
+    skills:     '#5e42a6',
+    contact:    '#953d75'
+  };
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = '#' + entry.target.id;
         links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+        if (bgMap[entry.target.id]) document.body.style.backgroundColor = bgMap[entry.target.id];
       }
     });
   }, { rootMargin: '-45% 0px -45% 0px' });

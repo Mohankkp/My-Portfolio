@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mohan Kumar &mdash; Network Development Engineer</title>
+<meta name="description" content="Mohan Kumar — Network Development Engineer specializing in cloud networking, BGP/EVPN/VXLAN, and network automation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #4a4a52;
+    --heading: #2b2b32;
+    --muted: #8a8a94;
+    --accent: #5b7cfa;
+    --accent-2: #8f6bfa;
+    --sidebar-bg: #2b2b32;
+    --sidebar-text: #c9c9d1;
+    --card-bg: #ffffff;
+    --border: #ececef;
+    --sidebar-w: 300px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+  h1, h2, h3 { font-family: "Raleway", sans-serif; color: var(--heading); letter-spacing: 0.02em; }
+  a { color: var(--accent); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--accent-2); }
+
+  /* ---------- Sidebar ---------- */
+  #sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    background-image: linear-gradient(160deg, #34343d 0%, #232329 100%);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    z-index: 100;
+  }
+  #sidebar .brand { text-align: center; margin-bottom: 2rem; }
+  #sidebar .avatar {
+    width: 120px; height: 120px; border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.6rem; color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 10px 30px rgba(91,124,250,.35);
+  }
+  #sidebar h1 { color: #fff; font-size: 1.6rem; margin: 0; }
+  #sidebar .tagline { color: var(--accent); font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; margin-top: .5rem; }
+  #sidebar nav { margin-top: 1rem; }
+  #sidebar nav a {
+    display: block; color: var(--sidebar-text);
+    padding: .7rem 1rem; border-radius: 8px;
+    font-size: .95rem; letter-spacing: .05em; text-transform: uppercase;
+    transition: background .2s, color .2s, padding-left .2s;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    background: rgba(91,124,250,.15); color: #fff; padding-left: 1.3rem;
+  }
+  #sidebar .socials { margin-top: auto; padding-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
+  #sidebar .socials a { color: var(--sidebar-text); font-size: .85rem; }
+  #sidebar .copyright { text-align: center; color: var(--muted); font-size: .72rem; margin-top: 1rem; }
+
+  /* ---------- Content ---------- */
+  #main { margin-left: var(--sidebar-w); }
+  section { padding: 5rem 6vw; max-width: 1000px; }
+  section:nth-of-type(even) { background: #fafafb; }
+  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; }
+  section h2 { font-size: 2rem; margin: .3rem 0 1.8rem; position: relative; }
+  section h2::after { content: ""; display: block; width: 48px; height: 4px; margin-top: .6rem; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+  /* Hero */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  #intro h2 { font-size: 3rem; }
+  #intro h2::after { display: none; }
+  #intro .lead { font-size: 1.35rem; color: var(--accent-2); font-weight: 400; margin: 0 0 1.5rem; }
+  .btn {
+    display: inline-block; margin-top: 1rem; padding: .85rem 1.8rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff; border-radius: 50px; font-weight: 600; letter-spacing: .05em;
+    box-shadow: 0 8px 24px rgba(91,124,250,.35); transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(91,124,250,.45); }
+
+  /* Timeline (experience + education) */
+  .timeline { border-left: 2px solid var(--border); margin-left: .5rem; }
+  .entry { position: relative; padding: 0 0 2.2rem 2rem; }
+  .entry::before {
+    content: ""; position: absolute; left: -9px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 4px rgba(91,124,250,.18);
+  }
+  .entry h3 { margin: 0; font-size: 1.2rem; }
+  .entry .role { color: var(--accent-2); font-weight: 600; }
+  .entry .meta { color: var(--muted); font-size: .88rem; margin: .1rem 0 .7rem; }
+  .entry ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+  .entry li { margin-bottom: .35rem; }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(43,43,50,.1); border-color: transparent; }
+  .card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+  .card p { margin: 0 0 1rem; font-size: .95rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag { font-size: .72rem; padding: .25rem .6rem; border-radius: 50px; background: rgba(91,124,250,.1); color: var(--accent); font-weight: 600; }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
+  .skill-block h3 { font-size: 1rem; margin: 0 0 .7rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip { font-size: .82rem; padding: .35rem .8rem; border-radius: 8px; background: #f0f0f5; color: var(--heading); }
+  .certs { margin-top: 2rem; }
+  .certs li { margin-bottom: .3rem; }
+
+  /* Contact */
+  .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .contact-links a { display: flex; flex-direction: column; padding: 1.2rem 1.4rem; border: 1px solid var(--border); border-radius: 12px; color: var(--text); transition: border-color .2s, transform .2s; }
+  .contact-links a:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-links .label { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .contact-links .value { color: var(--heading); font-weight: 600; word-break: break-all; }
+  .fin { text-align: center; color: var(--muted); margin-top: 3rem; font-family: "Raleway", sans-serif; }
+
+  /* Mobile */
+  #menu-toggle { display: none; }
+  @media (max-width: 900px) {
+    :root { --sidebar-w: 0px; }
+    #sidebar {
+      transform: translateX(-100%); width: 280px; transition: transform .3s;
+    }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    #menu-toggle {
+      display: flex; position: fixed; top: 1rem; left: 1rem; z-index: 200;
+      width: 46px; height: 46px; align-items: center; justify-content: center;
+      background: var(--sidebar-bg); color: #fff; border: none; border-radius: 10px;
+      font-size: 1.4rem; cursor: pointer;
+    }
+    section { padding: 4rem 7vw; }
+    #intro h2 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+
+<aside id="sidebar">
+  <div class="brand">
+    <div class="avatar">MK</div>
+    <h1>Mohan Kumar</h1>
+    <div class="tagline">Network &middot; Cloud &middot; Automation</div>
+  </div>
+  <nav>
+    <a href="#intro">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="socials">
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:mohan.chamraj@gmail.com">Email</a>
+  </div>
+  <div class="copyright">&copy; 2026 Mohan Kumar</div>
+</aside>
+
+<main id="main">
+
+  <section id="intro">
+    <span class="section-tag">Network Development Engineer</span>
+    <h2>Hi, I'm Mohan Kumar.</h2>
+    <p class="lead">Reliable &middot; Scalable &middot; Automation-Driven Networks</p>
+    <p>Network Development Engineer at Amazon Web Services with a Master's in Computer Networking and hands-on experience spanning cloud connectivity, datacenter routing, and network automation. I design and scale global network infrastructure &mdash; from Direct Connect PoPs and LEO satellite connectivity to BGP/EVPN/VXLAN fabrics &mdash; with a focus on high availability, capacity, and reducing operational toil through orchestration.</p>
+    <a class="btn" href="mailto:mohan.chamraj@gmail.com">Get in touch</a>
+  </section>
+
+  <section id="experience">
+    <span class="section-tag">Where I've worked</span>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="entry">
+        <h3>Amazon Web Services</h3>
+        <div class="role">Network Development Engineer 2</div>
+        <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
+        <ul>
+          <li>Led global rollout of Direct-to-AWS (D2A) racks enabling secure connectivity for LEO satellite customers across 120+ sites, ensuring scalable multi-site network expansion.</li>
+          <li>Onboarded Leo-Direct Connect infrastructure to a centralized orchestration platform enabling ZTP-based provisioning, reducing deployment cycle time from 6 months to 3 months.</li>
+          <li>Led deployment of 100G/400G Direct Connect services across global PoPs ensuring high availability and capacity SLAs.</li>
+          <li>Analyzed network resource utilization patterns and executed a customer migration strategy that improved network resource utilization by 35%.</li>
+          <li>Executed Juniper MX304 migration strategies for infrastructure upgrades, minimizing customer impact during architecture transitions.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Arista Networks</h3>
+        <div class="role">Technical Solutions Engineer</div>
+        <div class="meta">Cary, NC &middot; Dec 2022 &ndash; Aug 2024</div>
+        <ul>
+          <li>Diagnosed and resolved complex datacenter networking issues across BGP, VXLAN, EVPN, and L2/L3 systems.</li>
+          <li>Troubleshot network, software, and hardware issues with Arista products to provide Root Cause Analysis.</li>
+          <li>Collaborated with Systems Engineers to develop fixes tailored to client-specific deployments.</li>
+          <li>Debugged production issues and restored network connectivity during outages.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <h3>Nutanix</h3>
+        <div class="role">System Reliability Engineer Intern</div>
+        <div class="meta">Durham, NC &middot; May 2022 &ndash; Aug 2022</div>
+        <ul>
+          <li>Performed hyperscaler network performance analysis using Wireshark, tcpdump, MTR, iperf, and related tools.</li>
+          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and infrastructure reliability.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <span class="section-tag">What I studied</span>
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="entry">
+        <h3>NC State University</h3>
+        <div class="role">Master of Science in Computer Networking</div>
+        <div class="meta">Raleigh, NC &middot; Aug 2021 &ndash; May 2023</div>
+        <ul>
+          <li>Coursework: Linux Networking, Design &amp; Analysis of Algorithms, Cloud Computing, Routed Network Design, Switched Network Management, Software Engineering, Internet Protocols, Database Management.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>RNS Institute of Technology</h3>
+        <div class="role">Bachelor of Electronics and Communication</div>
+        <div class="meta">Karnataka, India &middot; Aug 2014 &ndash; May 2018</div>
+        <ul>
+          <li>Coursework: Operating Systems, Computer Networks, Wireless Networks.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="section-tag">Things I've built</span>
+    <h2>Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Network Migration Automation</h3>
+        <p>Designed an SDN model-based controller (similar to OpenDaylight) that migrates user-specified VMs between clouds within the same subnet. YAML-driven requirements feed an Ansible playbook that provisions tunneling infrastructure; a runtime model tracks system state.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Jinja2</span><span class="tag">Ansible</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Routing Protocols in Data Center</h3>
+        <p>Designed and implemented BGP and OSPF as routing protocols in a datacenter environment. Segmented the network into areas and applied route summarization to reduce LSA overhead &mdash; improving CPU performance by 5% and lowering memory overhead.</p>
+        <div class="tags"><span class="tag">Arista EOS</span><span class="tag">BGP</span><span class="tag">OSPF</span><span class="tag">ACL</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Switch Fabrics &amp; Server Load Balancing</h3>
+        <p>Configured multi-tenant Leaf-Spine (Fat-tree) topology with inter-tenant communication. Implemented BGP-EVPN control plane, ARP suppression, and per-tenant dynamic load balancing.</p>
+        <div class="tags"><span class="tag">BGP-EVPN</span><span class="tag">MP-BGP</span><span class="tag">Arista EOS</span><span class="tag">Load Balancer</span></div>
+      </div>
+
+      <div class="card">
+        <h3>File Sharing between Remote Systems</h3>
+        <p>Built a secure FTP over UDP sockets using the Go-Back-N ARQ protocol in Python, then evaluated its performance and error-control capability during data transmission.</p>
+        <div class="tags"><span class="tag">Go-Back-N ARQ</span><span class="tag">UDP</span><span class="tag">Python</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <span class="section-tag">My toolkit</span>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h3>Languages &amp; Frameworks</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Bash</span><span class="chip">Jinja2</span>
+          <span class="chip">NETCONF</span><span class="chip">FRR</span><span class="chip">REST API</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Tools</h3>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Containers</span>
+          <span class="chip">Jenkins</span><span class="chip">Ansible</span><span class="chip">ZTP</span><span class="chip">QEMU/KVM</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Operating Systems</h3>
+        <div class="chips">
+          <span class="chip">Linux</span><span class="chip">Arista EOS</span><span class="chip">Cisco IOS</span>
+          <span class="chip">JunOS</span><span class="chip">AlmaLinux OS</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Networking Protocols</h3>
+        <div class="chips">
+          <span class="chip">MP-BGP</span><span class="chip">OSPF/IS-IS</span><span class="chip">VXLAN</span>
+          <span class="chip">EVPN</span><span class="chip">MPLS</span><span class="chip">MLAG</span><span class="chip">LACP</span>
+          <span class="chip">TCP/IP</span><span class="chip">VRF</span><span class="chip">GRE/IPsec</span><span class="chip">MACsec</span>
+          <span class="chip">SNMP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">ARP</span><span class="chip">ICMP</span>
+        </div>
+      </div>
+    </div>
+    <div class="certs">
+      <h3>Certifications</h3>
+      <ul>
+        <li>Arista Cloud Engineer &mdash; Level 3</li>
+        <li>Nutanix Certified Professional &mdash; Multicloud Infrastructure (NCP-MCI)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="section-tag">Say hello</span>
+    <h2>Contact</h2>
+    <p>Open to conversations about cloud networking, network automation, and infrastructure at scale.</p>
+    <div class="contact-links">
+      <a href="mailto:mohan.chamraj@gmail.com">
+        <span class="label">Email</span><span class="value">mohan.chamraj@gmail.com</span>
+      </a>
+      <a href="tel:+19842708892">
+        <span class="label">Phone</span><span class="value">984-270-8892</span>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+        <span class="label">LinkedIn</span><span class="value">Connect with me</span>
+      </a>
+      <a href="#intro">
+        <span class="label">Location</span><span class="value">Seattle, WA</span>
+      </a>
+    </div>
+    <p class="fin">Fin :)</p>
+  </section>
+
+</main>
+
+<script>
+  // Mobile menu toggle
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('menu-toggle');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('#sidebar nav a').forEach(a =>
+    a.addEventListener('click', () => sidebar.classList.remove('open'))
+  );
+
+  // Active section highlighting
+  const links = document.querySelectorAll('#sidebar nav a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  sections.forEach(s => s && observer.observe(s));
+</script>
+
+</body>
+</html>

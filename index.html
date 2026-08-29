@@ -10,16 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #ffffff;
-    --text: #4a4a52;
-    --heading: #2b2b32;
-    --muted: #8a8a94;
-    --accent: #5b7cfa;
-    --accent-2: #8f6bfa;
-    --sidebar-bg: #2b2b32;
-    --sidebar-text: #c9c9d1;
-    --card-bg: #ffffff;
-    --border: #ececef;
+    --bg: #312450;
+    --text: #c8c2de;
+    --heading: #ffffff;
+    --muted: #9a92b8;
+    --accent: #d17ab0;
+    --accent-2: #8b6bd0;
+    --sidebar-bg: #261c3e;
+    --sidebar-text: #c8c2de;
+    --card-bg: #3a2c5e;
+    --border: rgba(255,255,255,0.12);
     --sidebar-w: 300px;
   }
   * { box-sizing: border-box; }
@@ -43,7 +43,7 @@
     top: 0; left: 0; bottom: 0;
     width: var(--sidebar-w);
     background: var(--sidebar-bg);
-    background-image: linear-gradient(160deg, #34343d 0%, #232329 100%);
+    background-image: linear-gradient(160deg, #33254f 0%, #201634 100%);
     color: var(--sidebar-text);
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
     display: flex; align-items: center; justify-content: center;
     font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.6rem; color: #fff;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    box-shadow: 0 10px 30px rgba(91,124,250,.35);
+    box-shadow: 0 10px 30px rgba(183,78,145,.35);
   }
   #sidebar h1 { color: #fff; font-size: 1.6rem; margin: 0; }
   #sidebar .tagline { color: var(--accent); font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; margin-top: .5rem; }
@@ -69,7 +69,7 @@
     transition: background .2s, color .2s, padding-left .2s;
   }
   #sidebar nav a:hover, #sidebar nav a.active {
-    background: rgba(91,124,250,.15); color: #fff; padding-left: 1.3rem;
+    background: rgba(183,78,145,.15); color: #fff; padding-left: 1.3rem;
   }
   #sidebar .socials { margin-top: auto; padding-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
   #sidebar .socials a { color: var(--sidebar-text); font-size: .85rem; }
@@ -78,7 +78,7 @@
   /* ---------- Content ---------- */
   #main { margin-left: var(--sidebar-w); }
   section { padding: 5rem 6vw; max-width: 1000px; }
-  section:nth-of-type(even) { background: #fafafb; }
+  section:nth-of-type(even) { background: #2a1f45; }
   .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; }
   section h2 { font-size: 2rem; margin: .3rem 0 1.8rem; position: relative; }
   section h2::after { content: ""; display: block; width: 48px; height: 4px; margin-top: .6rem; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
@@ -92,9 +92,9 @@
     display: inline-block; margin-top: 1rem; padding: .85rem 1.8rem;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: #fff; border-radius: 50px; font-weight: 600; letter-spacing: .05em;
-    box-shadow: 0 8px 24px rgba(91,124,250,.35); transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 24px rgba(183,78,145,.35); transition: transform .2s, box-shadow .2s;
   }
-  .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(91,124,250,.45); }
+  .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(183,78,145,.45); }
 
   /* Timeline (experience + education) */
   .timeline { border-left: 2px solid var(--border); margin-left: .5rem; }
@@ -102,7 +102,7 @@
   .entry::before {
     content: ""; position: absolute; left: -9px; top: 6px;
     width: 16px; height: 16px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 0 4px rgba(91,124,250,.18);
+    background: var(--accent); box-shadow: 0 0 0 4px rgba(183,78,145,.18);
   }
   .entry h3 { margin: 0; font-size: 1.2rem; }
   .entry .role { color: var(--accent-2); font-weight: 600; }
@@ -116,18 +116,18 @@
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
     padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
   }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(43,43,50,.1); border-color: transparent; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.35); border-color: rgba(209,122,176,.5); }
   .card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
   .card p { margin: 0 0 1rem; font-size: .95rem; }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .tag { font-size: .72rem; padding: .25rem .6rem; border-radius: 50px; background: rgba(91,124,250,.1); color: var(--accent); font-weight: 600; }
+  .tag { font-size: .72rem; padding: .25rem .6rem; border-radius: 50px; background: rgba(183,78,145,.1); color: var(--accent); font-weight: 600; }
   .repo-link { display: inline-block; margin-top: 1rem; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
 
   /* Skills */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
   .skill-block h3 { font-size: 1rem; margin: 0 0 .7rem; }
   .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-  .chip { font-size: .82rem; padding: .35rem .8rem; border-radius: 8px; background: #f0f0f5; color: var(--heading); }
+  .chip { font-size: .82rem; padding: .35rem .8rem; border-radius: 8px; background: rgba(255,255,255,.08); color: #eae6f5; }
   .certs { margin-top: 2rem; }
   .certs li { margin-bottom: .3rem; }
 

@@ -367,50 +367,6 @@
   <section id="projects">
     <span class="section-tag">Selected work</span>
     <h2>Projects</h2>
-    <div class="subhead">Network Design Labs</div>
-    <div class="grid">
-      <div class="card">
-        <h3>Global 3-Tier Data Center Network</h3>
-        <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
-        <pre class="diagram">      Global Backbone
-      /      |      \
-   DC-1    DC-2    DC-3
-    |        |       |
-  Spine    Spine   Spine
-  / | \    / | \   / | \
- Leaf ...            Leaf</pre>
-        <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
-      </div>
-      <div class="card">
-        <h3>EVPN-VXLAN Fabric &mdash; runnable</h3>
-        <p>A 2-spine / 4-leaf fabric on Containerlab + FRR: eBGP underlay, BGP-EVPN control plane, VXLAN data plane, and scripted failure tests (spine loss, route withdrawal). Deploys in one command.</p>
-        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">Failure testing</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
-      </div>
-      <div class="card">
-        <h3>Global BGP Backbone</h3>
-        <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
-        <pre class="diagram">        AS 65000
-           |
-     Route Reflectors
-      /            \
-  Region-A       Region-B
-   / \             / \
- PE   PE         PE   PE</pre>
-        <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
-      </div>
-      <div class="card">
-        <h3>400G AI Infrastructure Network</h3>
-        <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
-        <pre class="diagram">      Spine (non-blocking)
-       /     |     \
-    Leaf   Leaf   Leaf
-     |      |      |
-   GPU     GPU    GPU   (rail-optimized)</pre>
-        <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md" target="_blank" rel="noopener">Read the deep dive &rarr;</a>
-      </div>
-    </div>
     <div class="subhead">Academic Projects</div>
     <div class="grid">
 
@@ -454,7 +410,51 @@
       </div>
 
     </div>
-  </section>
+  <div class="subhead">Network Design Labs</div>
+    <div class="grid">
+      <div class="card">
+        <h3>Global 3-Tier Data Center Network</h3>
+        <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
+        <pre class="diagram">      Global Backbone
+      /      |      \
+   DC-1    DC-2    DC-3
+    |        |       |
+  Spine    Spine   Spine
+  / | \    / | \   / | \
+ Leaf ...            Leaf</pre>
+        <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
+      </div>
+      <div class="card">
+        <h3>EVPN-VXLAN Fabric &mdash; runnable</h3>
+        <p>A 2-spine / 4-leaf fabric on Containerlab + FRR: eBGP underlay, BGP-EVPN control plane, VXLAN data plane, and scripted failure tests (spine loss, route withdrawal). Deploys in one command.</p>
+        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">Failure testing</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
+      </div>
+      <div class="card">
+        <h3>Global BGP Backbone</h3>
+        <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
+        <pre class="diagram">        AS 65000
+           |
+     Route Reflectors
+      /            \
+  Region-A       Region-B
+   / \             / \
+ PE   PE         PE   PE</pre>
+        <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
+      </div>
+      <div class="card">
+        <h3>400G AI Infrastructure Network</h3>
+        <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
+        <pre class="diagram">      Spine (non-blocking)
+       /     |     \
+    Leaf   Leaf   Leaf
+     |      |      |
+   GPU     GPU    GPU   (rail-optimized)</pre>
+        <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md" target="_blank" rel="noopener">Read the deep dive &rarr;</a>
+      </div>
+    </div>
+    </section>
 
 <section id="skills">
     <span class="section-tag">My toolkit</span>

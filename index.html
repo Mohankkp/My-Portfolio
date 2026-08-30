@@ -263,14 +263,14 @@
     <div class="tagline">Network Development Engineer</div>
   </div>
   <nav>
-    <a href="#intro">Home</a>
+    <a href="#intro">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
     <a href="#focus">What I Build</a>
     <a href="#cases">Case Studies</a>
     <a href="#labs">Design Labs</a>
     <a href="#deepdives">Deep Dives</a>
     <a href="#approach">Approach</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="socials">
@@ -301,6 +301,119 @@
     <div class="btn-row">
       <a class="btn" href="https://drive.google.com/" target="_blank" rel="noopener">View Resume</a>
       <a class="btn btn-outline" href="#cases">See My Work</a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <span class="section-tag">Career progression</span>
+    <h2>Experience</h2>
+    <p class="lead-copy">Implementation &rarr; automation &rarr; scale &rarr; reliability &rarr; system design.</p>
+    <div class="timeline">
+      <div class="entry">
+        <h3>Amazon Web Services</h3>
+        <div class="role">Network Development Engineer II</div>
+        <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
+        <ul>
+          <li>Transitioned focus from Direct Connect (DX) deployment to Border / Internet Edge (FNC) network deployment, expanding into internet-facing edge infrastructure.</li>
+          <li>Led high-density capacity expansion deploying 100G/400G Direct Connect infrastructure across global AWS Points of Presence (PoPs), expanding Direct Connect locations to 90+ sites within a year.</li>
+          <li>Designed and deployed pilot LEO Direct-to-AWS (D2A) racks across 60+ global sites (NA, EMEA, LATAM), adapting deployment strategies for loose-gear deployments under RSPC constraints to scale next-gen private access infrastructure.</li>
+          <li>Designed and implemented an automated deployment-time validation step integrated with Equinix APIs to verify MMR cross-connects, proactively catching LOA mismatches prior to production turn-up and preventing customer-impacting delivery delays.</li>
+          <li>Built an event-driven automation platform using Python and AWS event services to reclaim unused Direct Connect ports by validating resource state through Equinix APIs, reducing average port recovery time from 6 hours to under five minutes.</li>
+          <li>Optimized the MP-iBGP mesh workflow by decoupling configuration streams from hardware provisioning dependencies, enabling early BGP neighbor pre-staging on edge switches and drastically reducing critical-path build delays.</li>
+          <li>Analyzed network resource utilization patterns, identified optimization opportunities, and executed customer migration strategies to improve network resource utilization by 35%.</li>
+          <li>Led a deep-dive investigation into multi-region Juniper MX304 failover/redundancy issues; identified systemic hardware/software root causes, deployed immediate and long-term fixes, and prevented critical customer-facing outages across global regions.</li>
+          <li>Built an automated Python auditing script targeting interface-state anomalies across global Direct Connect devices, reducing manual operational audit workload by 90% through automatic state correction.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Arista Networks</h3>
+        <div class="role">Technical Solutions Engineer</div>
+        <div class="meta">Cary, NC &middot; Dec 2022 &ndash; Aug 2024</div>
+        <ul>
+          <li>Designed lab topology testbeds simulating AI/ML cluster traffic, using tcpdump, Wireshark, and IXIA traffic generators to analyze RoCEv2 packet drops, ECMP pathing, and MTU behavior on 100G/400G Arista EOS devices.</li>
+          <li>Diagnosed and resolved hyperscaler data center networking issues across the BGP, VXLAN, and EVPN control plane.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Nutanix</h3>
+        <div class="role">System Reliability Engineer Intern</div>
+        <div class="meta">Durham, NC &middot; May 2022 &ndash; Aug 2022</div>
+        <ul>
+          <li>Performed network performance analysis using Wireshark, tcpdump, MTR, and iperf.</li>
+          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and infrastructure reliability.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Bosch Global</h3>
+        <div class="role">Software Engineer</div>
+        <div class="meta">Bengaluru, KA, India &middot; Aug 2018 &ndash; May 2021</div>
+        <ul>
+          <li>Developed automotive software using AUTOSAR and MISRA C guidelines for safety-critical vehicle systems.</li>
+          <li>Performed regression testing (HIL/SIL) to reduce software defects by 14% in a CI/CD environment.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;color:var(--muted);">MS, Computer Networking &mdash; NC State University (2021&ndash;2023) &middot; BE, Electronics &amp; Communication &mdash; RNS Institute of Technology (2014&ndash;2018)</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <span class="section-tag">My toolkit</span>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h3>Networking</h3>
+        <div class="chips">
+          <span class="chip">BGP</span><span class="chip">MP-BGP</span><span class="chip">EVPN-VXLAN</span>
+          <span class="chip">MPLS</span><span class="chip">OSPF</span><span class="chip">IS-IS</span><span class="chip">VRF</span>
+          <span class="chip">LACP</span><span class="chip">MLAG</span><span class="chip">TCP/IP</span><span class="chip">DNS</span>
+          <span class="chip">DHCP</span><span class="chip">SNMP</span><span class="chip">GRE/IPsec</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Programming &amp; Automation</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Shell Scripting</span><span class="chip">Jinja2</span>
+          <span class="chip">REST APIs</span><span class="chip">NETCONF</span><span class="chip">Ansible</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Infrastructure &amp; Cloud</h3>
+        <div class="chips">
+          <span class="chip">Deployment Orchestration</span><span class="chip">Configuration Management</span>
+          <span class="chip">Zero Touch Provisioning (ZTP)</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Platforms &amp; Operating Systems</h3>
+        <div class="chips">
+          <span class="chip">Linux</span><span class="chip">Juniper Junos</span><span class="chip">Arista EOS</span>
+          <span class="chip">Cisco IOS / NX-OS</span><span class="chip">FRRouting (FRR)</span><span class="chip">AlmachOS</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>Monitoring &amp; Observability</h3>
+        <div class="chips">
+          <span class="chip">Wireshark</span><span class="chip">tcpdump</span><span class="chip">MTR</span>
+          <span class="chip">Grafana</span><span class="chip">Prometheus</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h3>DevOps &amp; CI/CD</h3>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Containers</span>
+          <span class="chip">Jenkins</span><span class="chip">CI/CD Pipelines</span><span class="chip">QEMU/KVM</span>
+          <span class="chip">Infrastructure as Code (IaC)</span>
+        </div>
+      </div>
+    </div>
+    <div class="certs">
+      <h3>Certifications</h3>
+      <ul>
+        <li>Arista Cloud Engineer &ndash; Level 3</li>
+        <li>Nutanix Certified Professional &mdash; Multicloud Infrastructure (NCP-MCI)</li>
+      </ul>
     </div>
   </section>
 
@@ -539,119 +652,6 @@ Production issue                PASS / FAIL --> Production</pre>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <span class="section-tag">Career progression</span>
-    <h2>Experience</h2>
-    <p class="lead-copy">Implementation &rarr; automation &rarr; scale &rarr; reliability &rarr; system design.</p>
-    <div class="timeline">
-      <div class="entry">
-        <h3>Amazon Web Services</h3>
-        <div class="role">Network Development Engineer II</div>
-        <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
-        <ul>
-          <li>Transitioned focus from Direct Connect (DX) deployment to Border / Internet Edge (FNC) network deployment, expanding into internet-facing edge infrastructure.</li>
-          <li>Led high-density capacity expansion deploying 100G/400G Direct Connect infrastructure across global AWS Points of Presence (PoPs), expanding Direct Connect locations to 90+ sites within a year.</li>
-          <li>Designed and deployed pilot LEO Direct-to-AWS (D2A) racks across 60+ global sites (NA, EMEA, LATAM), adapting deployment strategies for loose-gear deployments under RSPC constraints to scale next-gen private access infrastructure.</li>
-          <li>Designed and implemented an automated deployment-time validation step integrated with Equinix APIs to verify MMR cross-connects, proactively catching LOA mismatches prior to production turn-up and preventing customer-impacting delivery delays.</li>
-          <li>Built an event-driven automation platform using Python and AWS event services to reclaim unused Direct Connect ports by validating resource state through Equinix APIs, reducing average port recovery time from 6 hours to under five minutes.</li>
-          <li>Optimized the MP-iBGP mesh workflow by decoupling configuration streams from hardware provisioning dependencies, enabling early BGP neighbor pre-staging on edge switches and drastically reducing critical-path build delays.</li>
-          <li>Analyzed network resource utilization patterns, identified optimization opportunities, and executed customer migration strategies to improve network resource utilization by 35%.</li>
-          <li>Led a deep-dive investigation into multi-region Juniper MX304 failover/redundancy issues; identified systemic hardware/software root causes, deployed immediate and long-term fixes, and prevented critical customer-facing outages across global regions.</li>
-          <li>Built an automated Python auditing script targeting interface-state anomalies across global Direct Connect devices, reducing manual operational audit workload by 90% through automatic state correction.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <h3>Arista Networks</h3>
-        <div class="role">Technical Solutions Engineer</div>
-        <div class="meta">Cary, NC &middot; Dec 2022 &ndash; Aug 2024</div>
-        <ul>
-          <li>Designed lab topology testbeds simulating AI/ML cluster traffic, using tcpdump, Wireshark, and IXIA traffic generators to analyze RoCEv2 packet drops, ECMP pathing, and MTU behavior on 100G/400G Arista EOS devices.</li>
-          <li>Diagnosed and resolved hyperscaler data center networking issues across the BGP, VXLAN, and EVPN control plane.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <h3>Nutanix</h3>
-        <div class="role">System Reliability Engineer Intern</div>
-        <div class="meta">Durham, NC &middot; May 2022 &ndash; Aug 2022</div>
-        <ul>
-          <li>Performed network performance analysis using Wireshark, tcpdump, MTR, and iperf.</li>
-          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and infrastructure reliability.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <h3>Bosch Global</h3>
-        <div class="role">Software Engineer</div>
-        <div class="meta">Bengaluru, KA, India &middot; Aug 2018 &ndash; May 2021</div>
-        <ul>
-          <li>Developed automotive software using AUTOSAR and MISRA C guidelines for safety-critical vehicle systems.</li>
-          <li>Performed regression testing (HIL/SIL) to reduce software defects by 14% in a CI/CD environment.</li>
-        </ul>
-      </div>
-    </div>
-    <p style="margin-top:1.5rem;color:var(--muted);">MS, Computer Networking &mdash; NC State University (2021&ndash;2023) &middot; BE, Electronics &amp; Communication &mdash; RNS Institute of Technology (2014&ndash;2018)</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <span class="section-tag">My toolkit</span>
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-block">
-        <h3>Networking</h3>
-        <div class="chips">
-          <span class="chip">BGP</span><span class="chip">MP-BGP</span><span class="chip">EVPN-VXLAN</span>
-          <span class="chip">MPLS</span><span class="chip">OSPF</span><span class="chip">IS-IS</span><span class="chip">VRF</span>
-          <span class="chip">LACP</span><span class="chip">MLAG</span><span class="chip">TCP/IP</span><span class="chip">DNS</span>
-          <span class="chip">DHCP</span><span class="chip">SNMP</span><span class="chip">GRE/IPsec</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <h3>Programming &amp; Automation</h3>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">Shell Scripting</span><span class="chip">Jinja2</span>
-          <span class="chip">REST APIs</span><span class="chip">NETCONF</span><span class="chip">Ansible</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <h3>Infrastructure &amp; Cloud</h3>
-        <div class="chips">
-          <span class="chip">Deployment Orchestration</span><span class="chip">Configuration Management</span>
-          <span class="chip">Zero Touch Provisioning (ZTP)</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <h3>Platforms &amp; Operating Systems</h3>
-        <div class="chips">
-          <span class="chip">Linux</span><span class="chip">Juniper Junos</span><span class="chip">Arista EOS</span>
-          <span class="chip">Cisco IOS / NX-OS</span><span class="chip">FRRouting (FRR)</span><span class="chip">AlmachOS</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <h3>Monitoring &amp; Observability</h3>
-        <div class="chips">
-          <span class="chip">Wireshark</span><span class="chip">tcpdump</span><span class="chip">MTR</span>
-          <span class="chip">Grafana</span><span class="chip">Prometheus</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <h3>DevOps &amp; CI/CD</h3>
-        <div class="chips">
-          <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Containers</span>
-          <span class="chip">Jenkins</span><span class="chip">CI/CD Pipelines</span><span class="chip">QEMU/KVM</span>
-          <span class="chip">Infrastructure as Code (IaC)</span>
-        </div>
-      </div>
-    </div>
-    <div class="certs">
-      <h3>Certifications</h3>
-      <ul>
-        <li>Arista Cloud Engineer &ndash; Level 3</li>
-        <li>Nutanix Certified Professional &mdash; Multicloud Infrastructure (NCP-MCI)</li>
-      </ul>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact">
     <span class="section-tag">Say hello</span>
@@ -681,13 +681,13 @@ Production issue                PASS / FAIL --> Production</pre>
   const links = document.querySelectorAll('#sidebar nav a');
   const bgMap = {
     intro:      '#312450',
-    focus:      '#3a2f77',
-    cases:      '#3e4094',
-    labs:       '#453a8a',
-    deepdives:  '#5052b5',
-    approach:   '#5e42a6',
-    experience: '#4a3a8c',
-    skills:     '#6a3f86',
+    experience: '#372a5e',
+    skills:     '#3e3170',
+    focus:      '#473a86',
+    cases:      '#52439b',
+    labs:       '#5e42a6',
+    deepdives:  '#6f3f92',
+    approach:   '#82407f',
     contact:    '#953d75'
   };
   const allSections = document.querySelectorAll('#main section');

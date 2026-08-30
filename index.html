@@ -185,6 +185,7 @@
     display: flex; gap: .9rem; align-items: flex-start;
     padding: 1.1rem 1.2rem; border-radius: 12px;
     background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    color: inherit; text-decoration: none;
     transition: border-color .2s, transform .2s;
   }
   .dive:hover { border-color: rgba(209,122,176,.5); transform: translateY(-3px); }
@@ -512,13 +513,14 @@ Production issue                PASS / FAIL --> Production</pre>
     <h2>Technical Deep Dives</h2>
     <p class="lead-copy">Short write-ups that trace a protocol or failure end to end &mdash; how I reason about networks, not how to configure them.</p>
     <div class="dive-list">
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">Troubleshooting a BGP session that won't establish</span><span class="s">Physical &rarr; ARP &rarr; TCP/179 &rarr; OPEN &rarr; capabilities &rarr; routes &rarr; policy</span></span></div>
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">EVPN-VXLAN: from packet ingress to remote VTEP</span><span class="s">The full encapsulation and lookup journey across the fabric</span></span></div>
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">How ECMP actually distributes traffic in a Clos network</span><span class="s">Hashing, flow pinning, and polarization in leaf-spine</span></span></div>
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">What happens when a spine switch fails?</span><span class="s">Link detection &rarr; BGP withdrawal &rarr; ECMP recalculation &rarr; reconvergence</span></span></div>
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">BGP is Established, but traffic is still broken</span><span class="s">Where the data plane and control plane disagree</span></span></div>
-      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">Designing networks for AI/GPU workloads</span><span class="s">Why AI traffic patterns reshape fabric design</span></span></div>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/bgp-session-troubleshooting.md"><span class="dot">&#9656;</span><span><span class="t">Troubleshooting a BGP session that won't establish</span><span class="s">Physical &rarr; ARP &rarr; TCP/179 &rarr; OPEN &rarr; capabilities &rarr; routes &rarr; policy</span></span></a>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/evpn-vxlan-packet-journey.md"><span class="dot">&#9656;</span><span><span class="t">EVPN-VXLAN: from packet ingress to remote VTEP</span><span class="s">The full encapsulation and lookup journey across the fabric</span></span></a>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ecmp-clos.md"><span class="dot">&#9656;</span><span><span class="t">How ECMP actually distributes traffic in a Clos network</span><span class="s">Hashing, flow pinning, and polarization in leaf-spine</span></span></a>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/spine-failure-convergence.md"><span class="dot">&#9656;</span><span><span class="t">What happens when a spine switch fails?</span><span class="s">Link detection &rarr; BGP withdrawal &rarr; ECMP recalculation &rarr; reconvergence</span></span></a>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/bgp-established-traffic-broken.md"><span class="dot">&#9656;</span><span><span class="t">BGP is Established, but traffic is still broken</span><span class="s">Where the data plane and control plane disagree</span></span></a>
+      <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md"><span class="dot">&#9656;</span><span><span class="t">Designing networks for AI/GPU workloads</span><span class="s">Why AI traffic patterns reshape fabric design</span></span></a>
     </div>
+    <p style="margin-top:1.6rem;"><a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">&#9656; Runnable lab: EVPN-VXLAN fabric on Containerlab + FRR &rarr;</a></p>
   </section>
 
   <!-- APPROACH: principles + problems -->

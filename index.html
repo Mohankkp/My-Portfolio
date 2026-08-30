@@ -261,10 +261,11 @@
   <div class="brand">
     <div class="avatar">MK</div>
     <h1>Mohan Kumar</h1>
-    <div class="tagline">Network Development Engineer</div>
+    <div class="tagline">Network Infrastructure Engineer</div>
   </div>
   <nav>
     <a href="#intro">About</a>
+    <a href="#featured">Featured</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#focus">What I Build</a>
@@ -286,8 +287,9 @@
 
   <!-- HERO -->
   <section id="intro">
-    <span class="section-tag">Network Development Engineer</span>
+    <span class="section-tag">Network Infrastructure Engineer</span>
     <h2>Hi, I'm Mohan.</h2>
+    <div class="role">Network Development Engineer II @ AWS</div>
     <p class="lead">I build and automate reliable, scalable network infrastructure at cloud scale.</p>
     <p class="lead-copy">5+ years designing, deploying, and operating large-scale data center and cloud networks &mdash; BGP, EVPN-VXLAN, MPLS, and Direct Connect infrastructure across Juniper, Arista, and Cisco platforms, with a strong software-engineering approach to automation and reliability.</p>
 
@@ -304,6 +306,37 @@
     </div>
   </section>
 
+  <!-- FEATURED -->
+  <section id="featured">
+    <span class="section-tag">Start here</span>
+    <h2>Featured Engineering</h2>
+    <p class="lead-copy">Three pieces of work that best show how I operate &mdash; scale, automation, and hands-on implementation.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">&#129351;</div>
+        <h3>Large-Scale Cloud Connectivity</h3>
+        <p>Scaling Direct Connect to 90+ locations with 100G/400G capacity engineering across global PoPs.</p>
+        <div class="tags"><span class="tag">Direct Connect</span><span class="tag">100G/400G</span><span class="tag">Capacity</span></div>
+        <a class="repo-link" href="#cases">See case study &rarr;</a>
+      </div>
+      <div class="card">
+        <div class="icon">&#129352;</div>
+        <h3>Network Automation Platform</h3>
+        <p>Event-driven Python/AWS automation that reclaims unused ports &mdash; recovery time cut from 6 hours to under 5 minutes.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Event-driven</span><span class="tag">AWS</span><span class="tag">APIs</span></div>
+        <a class="repo-link" href="#cases">See case study &rarr;</a>
+      </div>
+      <div class="card">
+        <div class="icon">&#129353;</div>
+        <h3>EVPN-VXLAN Production Lab</h3>
+        <p>Runnable Containerlab/FRR fabric &mdash; eBGP underlay, BGP-EVPN control plane, VXLAN, and failure tests. One-command deploy.</p>
+        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN-VXLAN</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;"><a class="repo-link" href="#cases">View all case studies &rarr;</a></p>
+  </section>
+
   <!-- EXPERIENCE -->
   <section id="experience">
     <span class="section-tag">Career progression</span>
@@ -315,16 +348,13 @@
         <div class="role">Network Development Engineer II</div>
         <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
         <ul>
-          <li>Transitioned focus from Direct Connect (DX) deployment to Border / Internet Edge (FNC) network deployment, expanding into internet-facing edge infrastructure.</li>
-          <li>Led high-density capacity expansion deploying 100G/400G Direct Connect infrastructure across global AWS Points of Presence (PoPs), expanding Direct Connect locations to 90+ sites within a year.</li>
-          <li>Designed and deployed pilot LEO Direct-to-AWS (D2A) racks across 60+ global sites (NA, EMEA, LATAM), adapting deployment strategies for loose-gear deployments under RSPC constraints to scale next-gen private access infrastructure.</li>
-          <li>Designed and implemented an automated deployment-time validation step integrated with Equinix APIs to verify MMR cross-connects, proactively catching LOA mismatches prior to production turn-up and preventing customer-impacting delivery delays.</li>
-          <li>Built an event-driven automation platform using Python and AWS event services to reclaim unused Direct Connect ports by validating resource state through Equinix APIs, reducing average port recovery time from 6 hours to under five minutes.</li>
-          <li>Optimized the MP-iBGP mesh workflow by decoupling configuration streams from hardware provisioning dependencies, enabling early BGP neighbor pre-staging on edge switches and drastically reducing critical-path build delays.</li>
-          <li>Analyzed network resource utilization patterns, identified optimization opportunities, and executed customer migration strategies to improve network resource utilization by 35%.</li>
-          <li>Led a deep-dive investigation into multi-region Juniper MX304 failover/redundancy issues; identified systemic hardware/software root causes, deployed immediate and long-term fixes, and prevented critical customer-facing outages across global regions.</li>
-          <li>Built an automated Python auditing script targeting interface-state anomalies across global Direct Connect devices, reducing manual operational audit workload by 90% through automatic state correction.</li>
+          <li>Moved from Direct Connect (DX) to Border / Internet Edge (FNC) deployment &mdash; expanding into internet-facing edge infrastructure.</li>
+          <li>Led high-density capacity expansion deploying 100G/400G Direct Connect across global PoPs, growing to 90+ locations within a year.</li>
+          <li>Built automated deployment-time validation (Equinix APIs) that verifies MMR cross-connects and catches LOA mismatches before production turn-up, preventing customer-impacting delays.</li>
+          <li>Built an event-driven Python/AWS platform to reclaim unused DX ports, cutting average port recovery time from 6 hours to under 5 minutes.</li>
+          <li>Led the RCA on multi-region Juniper MX304 failover/redundancy issues, deploying fixes that prevented critical customer-facing outages across regions.</li>
         </ul>
+        <p style="margin:.6rem 0 0;color:var(--muted);font-size:.92rem;">Also: pilot LEO D2A racks across 60+ global sites, MP-iBGP pre-staging, 35% utilization gains, and a Python audit tool that cut manual audit workload ~90%. <em>(full detail on resume)</em></p>
       </div>
       <div class="entry">
         <h3>Arista Networks</h3>
@@ -581,6 +611,26 @@ Production issue                PASS / FAIL --> Production</pre>
       <p>Onboarded the infrastructure to a centralized orchestration platform with Zero Touch Provisioning, standardizing bring-up and validation across sites so new racks came online consistently.</p>
       <div class="impact"><strong>Impact:</strong> Deployed pilot D2A racks across <strong>60+ global sites</strong> (NA, EMEA, LATAM), scaling next-gen private access infrastructure through standardized, automated provisioning.</div>
     </div>
+
+    <div class="case">
+      <h3>Debugging RoCEv2 at 100G/400G</h3>
+      <div class="tags"><span class="tag">RoCEv2</span><span class="tag">Arista EOS</span><span class="tag">IXIA</span><span class="tag">ECMP</span><span class="tag">MTU</span></div>
+      <span class="phase">Problem</span>
+      <p>AI/ML training traffic is unforgiving: RoCEv2 collectives stall on a single drop, and the failure often hides in ECMP hashing or an MTU mismatch rather than an obvious link error. The task was to reproduce and root-cause these behaviors on 100G/400G Arista EOS hardware.</p>
+      <span class="phase">Test setup</span>
+      <pre class="diagram">   Host/GPU ── Leaf ── Spine ── Leaf ── Host/GPU
+                 |                 |
+              IXIA gen          capture
+                 |                 |
+        synthetic all-reduce   tcpdump / Wireshark
+        + incast patterns      per-queue + drop counters</pre>
+      <span class="phase">Method</span>
+      <p>Designed lab testbeds simulating AI/ML cluster traffic with IXIA generators, then used tcpdump and Wireshark to analyze RoCEv2 packet drops, ECMP path distribution, and MTU behavior &mdash; isolating whether loss came from hash polarization, buffer/incast pressure, or a fragmentation/MTU mismatch on the RDMA class.</p>
+      <span class="phase">What it surfaces</span>
+      <p>Elephant-flow collisions on a single ECMP member, PFC/queue behavior under incast, and silent large-packet loss from MTU mismatch that small pings never reveal &mdash; the exact class of issue that caps AI job-completion time.</p>
+      <div class="impact"><strong>Impact:</strong> Turned "the fabric feels slow" into specific, reproducible root causes (ECMP hashing, MTU, drop behavior) on production-class 100G/400G hardware &mdash; directly relevant to modern AI-cluster networking.</div>
+      <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/roce-ai-cluster" target="_blank" rel="noopener">View testbed design &rarr;</a>
+    </div>
   </section>
 
   <!-- DESIGN LABS -->
@@ -592,6 +642,13 @@ Production issue                PASS / FAIL --> Production</pre>
       <div class="card">
         <h3>Global 3-Tier Data Center Network</h3>
         <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
+        <pre class="diagram">      Global Backbone
+      /      |      \
+   DC-1    DC-2    DC-3
+    |        |       |
+  Spine    Spine   Spine
+  / | \    / | \   / | \
+ Leaf ...            Leaf</pre>
         <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
       </div>
       <div class="card">
@@ -603,12 +660,25 @@ Production issue                PASS / FAIL --> Production</pre>
       <div class="card">
         <h3>Global BGP Backbone</h3>
         <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
+        <pre class="diagram">        AS 65000
+           |
+     Route Reflectors
+      /            \
+  Region-A       Region-B
+   / \             / \
+ PE   PE         PE   PE</pre>
         <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
       </div>
       <div class="card">
         <h3>400G AI Infrastructure Network</h3>
         <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
+        <pre class="diagram">      Spine (non-blocking)
+       /     |     \
+    Leaf   Leaf   Leaf
+     |      |      |
+   GPU     GPU    GPU   (rail-optimized)</pre>
         <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md" target="_blank" rel="noopener">Read the deep dive &rarr;</a>
       </div>
     </div>
   </section>
@@ -682,14 +752,15 @@ Production issue                PASS / FAIL --> Production</pre>
   const links = document.querySelectorAll('#sidebar nav a');
   const bgMap = {
     intro:      '#312450',
-    experience: '#3a2c5e',
-    skills:     '#46305f',
-    focus:      '#5a3563',
-    cases:      '#6f3a51',
-    labs:       '#7c3f3c',
-    deepdives:  '#834b26',
-    approach:   '#7d5a18',
-    contact:    '#756415'
+    featured:   '#382c5c',
+    experience: '#453060',
+    skills:     '#573463',
+    focus:      '#6a3a5c',
+    cases:      '#7a3f4a',
+    labs:       '#834b2e',
+    deepdives:  '#82571d',
+    approach:   '#7c6016',
+    contact:    '#756814'
   };
   const allSections = document.querySelectorAll('#main section');
   const observer = new IntersectionObserver(entries => {

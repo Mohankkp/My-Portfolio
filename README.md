@@ -40,4 +40,7 @@ Connect), and network automation (Python, AWS).
 
 - [EVPN-VXLAN leaf-spine fabric (Containerlab + FRRouting)](labs/containerlab-evpn-vxlan/README.md) —
   2 spines, 4 leaves, eBGP underlay + BGP-EVPN overlay, VXLAN data plane, with
-  validation and failure tests.
+  validation and failure tests. **Runnable, one-command deploy.**
+- [RoCEv2 / AI-cluster network testbed](labs/roce-ai-cluster/README.md) —
+  design + methodology for reproducing RoCEv2 drops, ECMP imbalance, and MTU issues
+  on a 100G/400G fabric.

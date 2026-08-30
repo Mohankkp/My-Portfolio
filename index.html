@@ -148,6 +148,13 @@
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
   .tag { font-size: .72rem; padding: .25rem .6rem; border-radius: 50px; background: rgba(183,78,145,.1); color: var(--accent); font-weight: 600; }
   .repo-link { display: inline-block; margin-top: 1rem; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
+  .strength .strength-num {
+    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1;
+    margin-bottom: .6rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
 
   /* Skills */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
@@ -201,6 +208,7 @@
   </div>
   <nav>
     <a href="#intro">About</a>
+    <a href="#strengths">Strengths</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
@@ -226,6 +234,28 @@
       <a class="btn" href="https://drive.google.com/" target="_blank" rel="noopener">View Resume</a>
       <a class="btn btn-outline" href="mailto:mohan.chamraj@gmail.com">Get in touch</a>
     </p>
+  </section>
+
+  <section id="strengths">
+    <span class="section-tag">What I bring</span>
+    <h2>Core Strengths</h2>
+    <div class="grid">
+      <div class="card strength">
+        <div class="strength-num">01</div>
+        <h3>Protocol &amp; Routing Depth</h3>
+        <p>Strong command of TCP/IP, BGP, OSPF/IS-IS, and EVPN/VXLAN &mdash; reasoning about how packets actually move rather than memorizing configs. The foundation everything else builds on.</p>
+      </div>
+      <div class="card strength">
+        <div class="strength-num">02</div>
+        <h3>Automation &amp; Infrastructure-as-Code</h3>
+        <p>Python, Ansible, ZTP, Jinja2, and NETCONF/REST APIs to turn manual CLI work into repeatable, version-controlled provisioning &mdash; the difference between a network you operate and one you scale.</p>
+      </div>
+      <div class="card strength">
+        <div class="strength-num">03</div>
+        <h3>Troubleshooting &amp; Root-Cause Analysis</h3>
+        <p>Systematically isolating faults across L1&ndash;L7 under pressure with packet captures, telemetry, and log correlation &mdash; restoring production networks and delivering clean RCAs.</p>
+      </div>
+    </div>
   </section>
 
   <section id="experience">
@@ -434,6 +464,7 @@
   const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
   const bgMap = {
     intro:      '#312450',
+    strengths:  '#3a2f77',
     experience: '#3e4094',
     education:  '#493382',
     projects:   '#5052b5',

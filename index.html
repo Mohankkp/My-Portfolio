@@ -88,7 +88,8 @@
   #sidebar nav a:hover, #sidebar nav a.active {
     background: rgba(183,78,145,.15); color: #fff; padding-left: 1.3rem;
   }
-  #sidebar nav a .bar { display: block; height: 2px; margin-top: .4rem; background: rgba(255,255,255,.09); border-radius: 2px; overflow: hidden; }
+  #sidebar nav a .bar { display: block; height: 2px; margin-top: .4rem; background: rgba(255,255,255,.09); border-radius: 2px; overflow: hidden; opacity: 0; transition: opacity .3s ease; }
+  #sidebar nav a.active .bar { opacity: 1; }
   #sidebar nav a .bar i { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .15s linear; }
   #sidebar .socials { margin-top: 1.6rem; padding-top: 1.2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   #sidebar .socials a { color: var(--sidebar-text); font-size: .8rem; }

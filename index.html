@@ -87,6 +87,10 @@
   #sidebar nav a:hover, #sidebar nav a.active {
     background: rgba(183,78,145,.15); color: #fff; padding-left: 1.3rem;
   }
+  #sidebar .progress { margin-top: 1.4rem; padding: 0 .6rem; }
+  #sidebar .progress .track { height: 5px; background: rgba(255,255,255,.14); border-radius: 5px; overflow: hidden; }
+  #sidebar .progress .fill { height: 100%; width: 0%; border-radius: 5px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .12s linear; }
+  #sidebar .progress .pct { display: block; text-align: center; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: .45rem; }
   #sidebar .socials { margin-top: 1.6rem; padding-top: 1.2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   #sidebar .socials a { color: var(--sidebar-text); font-size: .8rem; }
   #sidebar .copyright { text-align: center; color: var(--muted); font-size: .68rem; margin-top: .8rem; }
@@ -269,6 +273,10 @@
     <a href="#work">Case Studies / Deep Dives</a>
     <a href="#contact">Contact</a>
   </nav>
+  <div class="progress">
+    <div class="track"><div class="fill"></div></div>
+    <span class="pct">0% read</span>
+  </div>
   <div class="socials">
     <a href="https://www.linkedin.com/in/mohan-kumar-kc/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/Mohankkp" target="_blank" rel="noopener">GitHub</a>
@@ -652,6 +660,20 @@ Production issue                PASS / FAIL --> Production</pre>
   document.querySelectorAll('#sidebar nav a').forEach(a =>
     a.addEventListener('click', () => sidebar.classList.remove('open'))
   );
+
+  // Reading-progress bar
+  const progFill = document.querySelector('.progress .fill');
+  const progPct = document.querySelector('.progress .pct');
+  function updateProgress() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? Math.min(100, Math.round((h.scrollTop / max) * 100)) : 0;
+    progFill.style.width = p + '%';
+    progPct.textContent = p + '% read';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
 
   // Per-section background + active nav highlighting
   const links = document.querySelectorAll('#sidebar nav a');

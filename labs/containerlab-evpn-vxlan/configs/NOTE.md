@@ -1,12 +1,14 @@
-# Kernel VXLAN / bridge setup (data plane)
+# Kernel VXLAN / bridge setup (data plane) — reference
 
 The `.cfg` files configure FRR — the **control plane** (underlay eBGP + BGP-EVPN).
 The VXLAN **data plane** is a Linux-kernel construct that must exist on each leaf
 before `advertise-all-vni` has anything to advertise. On each leaf, VNI 10010 maps
 to a bridge whose access port is the host-facing link (`eth3`).
 
-Per-leaf setup (run inside each leaf container, e.g. via `docker exec` or a
-containerlab `exec`), with `VTEP` = that leaf's loopback (10.0.0.1 … 10.0.0.4):
+> **This is now automated** — each leaf's `exec` block in `topology.clab.yml` runs
+> these commands at deploy time, so the fabric comes up in one command. This page
+> documents *what* that setup does and why. The per-leaf commands, with
+> `VTEP` = that leaf's loopback (10.0.0.1 … 10.0.0.4):
 
 ```bash
 # L2 bridge for the tenant segment

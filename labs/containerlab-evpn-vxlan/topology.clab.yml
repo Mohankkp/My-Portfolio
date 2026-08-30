@@ -5,7 +5,12 @@
 # MAC/IP (Type-2) and IMET (Type-3) routes. VXLAN VNI 10010 stitches
 # the hosts into one L2 segment across an all-L3 fabric.
 #
+# The kernel data plane (loopback VTEP IP + bridge + VXLAN interface) is
+# set up automatically via each leaf's `exec` block, so this deploys in one
+# command with no manual per-node steps.
+#
 # Run:   sudo containerlab deploy -t topology.clab.yml
+# Check: ./validate.sh
 # Wipe:  sudo containerlab destroy -t topology.clab.yml
 
 name: evpn-vxlan-fabric
@@ -20,10 +25,58 @@ topology:
   nodes:
     spine1: { kind: linux, group: spine, startup-config: configs/spine1.cfg }
     spine2: { kind: linux, group: spine, startup-config: configs/spine2.cfg }
-    leaf1:  { kind: linux, group: leaf,  startup-config: configs/leaf1.cfg }
-    leaf2:  { kind: linux, group: leaf,  startup-config: configs/leaf2.cfg }
-    leaf3:  { kind: linux, group: leaf,  startup-config: configs/leaf3.cfg }
-    leaf4:  { kind: linux, group: leaf,  startup-config: configs/leaf4.cfg }
+
+    # Leaves are VTEPs. exec creates the loopback (VTEP source), the tenant
+    # bridge br10, and the VNI 10010 VXLAN interface, then enslaves the
+    # host-facing port (eth3). `nolearning` — MACs come from EVPN, not flooding.
+    leaf1:
+      kind: linux
+      group: leaf
+      startup-config: configs/leaf1.cfg
+      exec:
+        - ip addr add 10.0.0.1/32 dev lo
+        - ip link add name br10 type bridge
+        - ip link set br10 up
+        - ip link add vni10010 type vxlan id 10010 dstport 4789 local 10.0.0.1 nolearning
+        - ip link set vni10010 master br10
+        - ip link set vni10010 up
+        - ip link set eth3 master br10
+    leaf2:
+      kind: linux
+      group: leaf
+      startup-config: configs/leaf2.cfg
+      exec:
+        - ip addr add 10.0.0.2/32 dev lo
+        - ip link add name br10 type bridge
+        - ip link set br10 up
+        - ip link add vni10010 type vxlan id 10010 dstport 4789 local 10.0.0.2 nolearning
+        - ip link set vni10010 master br10
+        - ip link set vni10010 up
+        - ip link set eth3 master br10
+    leaf3:
+      kind: linux
+      group: leaf
+      startup-config: configs/leaf3.cfg
+      exec:
+        - ip addr add 10.0.0.3/32 dev lo
+        - ip link add name br10 type bridge
+        - ip link set br10 up
+        - ip link add vni10010 type vxlan id 10010 dstport 4789 local 10.0.0.3 nolearning
+        - ip link set vni10010 master br10
+        - ip link set vni10010 up
+        - ip link set eth3 master br10
+    leaf4:
+      kind: linux
+      group: leaf
+      startup-config: configs/leaf4.cfg
+      exec:
+        - ip addr add 10.0.0.4/32 dev lo
+        - ip link add name br10 type bridge
+        - ip link set br10 up
+        - ip link add vni10010 type vxlan id 10010 dstport 4789 local 10.0.0.4 nolearning
+        - ip link set vni10010 master br10
+        - ip link set vni10010 up
+        - ip link set eth3 master br10
 
     # Hosts — all in 10.10.10.0/24, expected to reach each other over VXLAN
     h1: { kind: host, exec: ["ip addr add 10.10.10.1/24 dev eth1"] }

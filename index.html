@@ -288,7 +288,6 @@
   <section id="intro">
     <span class="section-tag">Network Development Engineer</span>
     <h2>Hi, I'm Mohan.</h2>
-    <div class="role">Data Center Networking &middot; Cloud Connectivity &middot; Network Automation</div>
     <p class="lead">I build and automate reliable, scalable network infrastructure at cloud scale.</p>
     <p class="lead-copy">5+ years designing, deploying, and operating large-scale data center and cloud networks &mdash; BGP, EVPN-VXLAN, MPLS, and Direct Connect infrastructure across Juniper, Arista, and Cisco platforms, with a strong software-engineering approach to automation and reliability.</p>
 
@@ -588,7 +587,7 @@ Production issue                PASS / FAIL --> Production</pre>
   <section id="labs">
     <span class="section-tag">Design, not just configure</span>
     <h2>Network Design Labs</h2>
-    <p class="lead-copy">Independent architecture studies &mdash; how I approach designing networks from first principles, beyond any single employer.</p>
+    <p class="lead-copy">One runnable lab you can deploy yourself, plus independent architecture studies &mdash; how I approach designing networks from first principles, beyond any single employer.</p>
     <div class="grid">
       <div class="card">
         <h3>Global 3-Tier Data Center Network</h3>
@@ -596,9 +595,10 @@ Production issue                PASS / FAIL --> Production</pre>
         <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
       </div>
       <div class="card">
-        <h3>EVPN-VXLAN Fabric</h3>
-        <p>Multi-tenant fabric with a BGP-EVPN control plane, ARP suppression, and distributed anycast gateways.</p>
-        <div class="tags"><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">MP-BGP</span><span class="tag">Multi-tenancy</span></div>
+        <h3>EVPN-VXLAN Fabric &mdash; runnable</h3>
+        <p>A 2-spine / 4-leaf fabric on Containerlab + FRR: eBGP underlay, BGP-EVPN control plane, VXLAN data plane, and scripted failure tests (spine loss, route withdrawal). Deploys in one command.</p>
+        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">Failure testing</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
       </div>
       <div class="card">
         <h3>Global BGP Backbone</h3>
@@ -637,11 +637,11 @@ Production issue                PASS / FAIL --> Production</pre>
 
     <div class="subhead">Principles I follow</div>
     <div class="principle-grid">
-      <div class="principle"><h4>Automate repetitive work</h4><p>If an engineer runs the same validation repeatedly, it should eventually become software.</p></div>
-      <div class="principle"><h4>Design for failure</h4><p>Assume components fail. Build systems that limit blast radius and recover predictably.</p></div>
-      <div class="principle"><h4>Measure before scaling</h4><p>Capacity decisions come from utilization, growth, and failure scenarios &mdash; not assumptions.</p></div>
-      <div class="principle"><h4>Make networks observable</h4><p>If you can't explain why traffic took a path, the system isn't observable enough.</p></div>
-      <div class="principle"><h4>Prevent over detect</h4><p>The best network incident is the one prevented before deployment.</p></div>
+      <div class="principle"><h4>Automate repetitive work</h4><p>I look for operational workflows where humans repeatedly reconcile desired state against actual network state &mdash; and turn those workflows into software.</p></div>
+      <div class="principle"><h4>Design for failure</h4><p>I start a design by asking what happens when a link, device, control-plane session, or an entire PoP disappears &mdash; then bound the blast radius so recovery is predictable.</p></div>
+      <div class="principle"><h4>Measure before scaling</h4><p>I base capacity decisions on real utilization, growth trends, and N-1 failure scenarios &mdash; not on assumptions about how much headroom "feels" safe.</p></div>
+      <div class="principle"><h4>Make networks observable</h4><p>If I can't explain why traffic took a given path, I treat that as a gap in the system, not a mystery to live with.</p></div>
+      <div class="principle"><h4>Prevent over detect</h4><p>I'd rather a bad change fail a validation gate before turn-up than page someone after a customer notices. The best incident is the one that never ships.</p></div>
     </div>
 
     <div class="subhead">Problems I'm interested in solving</div>

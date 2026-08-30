@@ -293,7 +293,7 @@
 
     <div class="metrics">
       <div class="metric"><span class="num">5+</span><span class="label">Years Network Engineering</span></div>
-      <div class="metric"><span class="num">120+</span><span class="label">Direct Connect Locations</span></div>
+      <div class="metric"><span class="num">90+</span><span class="label">Direct Connect Locations</span></div>
       <div class="metric"><span class="num">100G/400G</span><span class="label">Network Infrastructure</span></div>
       <div class="metric"><span class="num">Python</span><span class="label">+ AWS Automation</span></div>
     </div>
@@ -385,7 +385,7 @@
     <p class="lead-copy">Anonymized studies based on production-scale networking work. Diagrams are illustrative and contain no proprietary detail.</p>
 
     <div class="case">
-      <h3>Scaling Cloud Connectivity to 120+ Locations</h3>
+      <h3>Scaling Cloud Connectivity to 90+ Locations</h3>
       <div class="tags"><span class="tag">Direct Connect</span><span class="tag">Capacity</span><span class="tag">100G/400G</span><span class="tag">BGP</span></div>
       <span class="phase">Problem</span>
       <p>How do you scale physical network connectivity across hundreds of PoPs and regions while keeping reliability and operational consistency high &mdash; without deployment cycle times ballooning as the fleet grows?</p>
@@ -403,7 +403,7 @@
       Fabric      Fabric      Fabric</pre>
       <span class="phase">Engineering decisions</span>
       <p>Capacity forecasting from utilization trends &middot; 100G/400G port expansion at constrained PoPs &middot; deployment sequencing to bound blast radius &middot; validation gates and rollback paths before production cutover.</p>
-      <div class="impact"><strong>Impact:</strong> Contributed to scaling Direct Connect infrastructure across <strong>120+ locations</strong>, delivering 100G/400G services across global PoPs while maintaining high-availability and capacity SLAs.</div>
+      <div class="impact"><strong>Impact:</strong> Expanded Direct Connect infrastructure to <strong>90+ locations within a year</strong>, delivering 100G/400G services across global PoPs while maintaining high-availability and capacity SLAs.</div>
     </div>
 
     <div class="case">
@@ -421,37 +421,37 @@ Human error                      |   consistency / drift)
   |                               |
 Production issue                PASS / FAIL --> Production</pre>
       <span class="phase">Solution</span>
-      <p>Built Python-based validation into the deployment pipeline &mdash; expected-vs-actual state checks, configuration consistency, and drift detection that gate a change before it reaches production.</p>
-      <div class="impact"><strong>Impact:</strong> Shifted validation from reactive troubleshooting to <strong>failure prevention</strong>, cutting manual operational effort and reducing deployment cycle time from 6 months to 3.</div>
+      <p>Built a Python validation step into the deployment pipeline, integrated with Equinix APIs to verify MMR cross-connects and check expected-vs-actual state &mdash; catching LOA mismatches before production turn-up instead of after a customer reports a problem.</p>
+      <div class="impact"><strong>Impact:</strong> Shifted validation from reactive troubleshooting to <strong>failure prevention</strong>, proactively catching LOA mismatches and preventing customer-impacting delivery delays.</div>
     </div>
 
     <div class="case">
       <h3>Event-Driven Network Resource Reclamation</h3>
-      <div class="tags"><span class="tag">AWS</span><span class="tag">Lambda</span><span class="tag">EventBridge</span><span class="tag">Utilization</span></div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">AWS Events</span><span class="tag">Equinix APIs</span><span class="tag">Utilization</span></div>
       <span class="phase">Problem</span>
-      <p>Polling for idle network resources meant constant API calls, delayed detection, and standing operational overhead &mdash; and underused capacity that inflated cost and constrained growth.</p>
+      <p>Reclaiming unused Direct Connect ports was slow and manual &mdash; leaving stranded capacity that inflated cost and constrained growth, with recovery taking hours.</p>
       <span class="phase">Why event-driven</span>
-      <pre class="diagram">Network resource state change
+      <pre class="diagram">Direct Connect port state change
               |
-          EventBridge
+          AWS event service
               |
             Lambda
               |
-        Validate resource
+   Validate state via Equinix API
           /          \
       Unused        Active
         |              |
      Reclaim        Retain</pre>
       <span class="phase">Approach</span>
-      <p>Reacted to resource state changes instead of polling &mdash; immediate processing, state validation, and an automated reclaim/retain decision. Systems engineering applied to a networking problem.</p>
-      <div class="impact"><strong>Impact:</strong> Executed a data-driven migration and reclamation strategy that improved network resource utilization by <strong>35%</strong>.</div>
+      <p>Reacted to port state changes instead of polling &mdash; immediate processing, state validation through Equinix APIs, and an automated reclaim/retain decision. Systems engineering applied to a networking problem.</p>
+      <div class="impact"><strong>Impact:</strong> Reduced average Direct Connect port recovery time from <strong>6 hours to under 5 minutes</strong>. (Separately, a data-driven migration strategy improved network resource utilization by 35%.)</div>
     </div>
 
     <div class="case">
       <h3>Integrating LEO Satellite Infrastructure with Cloud Connectivity</h3>
       <div class="tags"><span class="tag">ZTP</span><span class="tag">Deployment Automation</span><span class="tag">Scale</span></div>
       <span class="phase">Problem</span>
-      <p>Onboarding a new class of edge racks (Direct-to-AWS for LEO satellite customers) meant provisioning consistent, validated infrastructure across many sites &mdash; fast, and without per-site manual toil.</p>
+      <p>Piloting a new class of edge racks (Direct-to-AWS for LEO satellite customers) across NA, EMEA, and LATAM meant provisioning consistent, validated infrastructure at many sites &mdash; while adapting deployment strategy for loose-gear installs under RSPC constraints.</p>
       <span class="phase">Architecture</span>
       <pre class="diagram">LEO / edge infrastructure
           |
@@ -466,7 +466,7 @@ Production issue                PASS / FAIL --> Production</pre>
    provisioning</pre>
       <span class="phase">Approach</span>
       <p>Onboarded the infrastructure to a centralized orchestration platform with Zero Touch Provisioning, standardizing bring-up and validation across sites so new racks came online consistently.</p>
-      <div class="impact"><strong>Impact:</strong> Enabled secure connectivity across <strong>120+ sites</strong> and cut deployment cycle time from <strong>6 months to 3</strong> through ZTP-based provisioning.</div>
+      <div class="impact"><strong>Impact:</strong> Deployed pilot D2A racks across <strong>60+ global sites</strong> (NA, EMEA, LATAM), scaling next-gen private access infrastructure through standardized, automated provisioning.</div>
     </div>
   </section>
 
@@ -547,15 +547,18 @@ Production issue                PASS / FAIL --> Production</pre>
     <div class="timeline">
       <div class="entry">
         <h3>Amazon Web Services</h3>
-        <div class="role">Network Development Engineer 2</div>
+        <div class="role">Network Development Engineer II</div>
         <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
         <ul>
           <li>Transitioned focus from Direct Connect (DX) deployment to Border / Internet Edge (FNC) network deployment, expanding into internet-facing edge infrastructure.</li>
-          <li>Led rollout of Direct-to-AWS racks enabling secure connectivity for LEO satellite customers across 120+ sites.</li>
-          <li>Onboarded infrastructure to centralized orchestration with ZTP-based provisioning, cutting deployment cycle time from 6 months to 3.</li>
-          <li>Delivered 100G/400G Direct Connect services across global PoPs with high-availability and capacity SLAs.</li>
-          <li>Analyzed utilization patterns and executed a migration strategy that improved network resource utilization by 35%.</li>
-          <li>Executed Juniper MX304 migration strategies for infrastructure upgrades, minimizing customer impact.</li>
+          <li>Led high-density capacity expansion deploying 100G/400G Direct Connect infrastructure across global AWS Points of Presence (PoPs), expanding Direct Connect locations to 90+ sites within a year.</li>
+          <li>Designed and deployed pilot LEO Direct-to-AWS (D2A) racks across 60+ global sites (NA, EMEA, LATAM), adapting deployment strategies for loose-gear deployments under RSPC constraints to scale next-gen private access infrastructure.</li>
+          <li>Designed and implemented an automated deployment-time validation step integrated with Equinix APIs to verify MMR cross-connects, proactively catching LOA mismatches prior to production turn-up and preventing customer-impacting delivery delays.</li>
+          <li>Built an event-driven automation platform using Python and AWS event services to reclaim unused Direct Connect ports by validating resource state through Equinix APIs, reducing average port recovery time from 6 hours to under five minutes.</li>
+          <li>Optimized the MP-iBGP mesh workflow by decoupling configuration streams from hardware provisioning dependencies, enabling early BGP neighbor pre-staging on edge switches and drastically reducing critical-path build delays.</li>
+          <li>Analyzed network resource utilization patterns, identified optimization opportunities, and executed customer migration strategies to improve network resource utilization by 35%.</li>
+          <li>Led a deep-dive investigation into multi-region Juniper MX304 failover/redundancy issues; identified systemic hardware/software root causes, deployed immediate and long-term fixes, and prevented critical customer-facing outages across global regions.</li>
+          <li>Built an automated Python auditing script targeting interface-state anomalies across global Direct Connect devices, reducing manual operational audit workload by 90% through automatic state correction.</li>
         </ul>
       </div>
       <div class="entry">
@@ -563,9 +566,8 @@ Production issue                PASS / FAIL --> Production</pre>
         <div class="role">Technical Solutions Engineer</div>
         <div class="meta">Cary, NC &middot; Dec 2022 &ndash; Aug 2024</div>
         <ul>
-          <li>Diagnosed and resolved complex datacenter networking issues across BGP, VXLAN, EVPN, and L2/L3 systems.</li>
-          <li>Delivered root-cause analysis on network, software, and hardware issues; restored connectivity during outages.</li>
-          <li>Collaborated with Systems Engineers to develop fixes tailored to client-specific deployments.</li>
+          <li>Designed lab topology testbeds simulating AI/ML cluster traffic, using tcpdump, Wireshark, and IXIA traffic generators to analyze RoCEv2 packet drops, ECMP pathing, and MTU behavior on 100G/400G Arista EOS devices.</li>
+          <li>Diagnosed and resolved hyperscaler data center networking issues across the BGP, VXLAN, and EVPN control plane.</li>
         </ul>
       </div>
       <div class="entry">
@@ -573,18 +575,17 @@ Production issue                PASS / FAIL --> Production</pre>
         <div class="role">System Reliability Engineer Intern</div>
         <div class="meta">Durham, NC &middot; May 2022 &ndash; Aug 2022</div>
         <ul>
-          <li>Performed hyperscaler network performance analysis using Wireshark, tcpdump, MTR, and iperf.</li>
-          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and reliability.</li>
+          <li>Performed network performance analysis using Wireshark, tcpdump, MTR, and iperf.</li>
+          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and infrastructure reliability.</li>
         </ul>
       </div>
       <div class="entry">
-        <h3>Robert Bosch</h3>
+        <h3>Bosch Global</h3>
         <div class="role">Software Engineer</div>
-        <div class="meta">Bengaluru, India &middot; Aug 2018 &ndash; May 2021</div>
+        <div class="meta">Bengaluru, KA, India &middot; Aug 2018 &ndash; May 2021</div>
         <ul>
-          <li>Developed safety-critical automotive software under AUTOSAR and MISRA C guidelines.</li>
-          <li>Implemented Emergency Start-Stop functionality for the Electronic Stability Program (ESP).</li>
-          <li>Ran regression testing (HIL/SIL) in a CI/CD environment, reducing bugs by 14%.</li>
+          <li>Developed automotive software using AUTOSAR and MISRA C guidelines for safety-critical vehicle systems.</li>
+          <li>Performed regression testing (HIL/SIL) to reduce software defects by 14% in a CI/CD environment.</li>
         </ul>
       </div>
     </div>

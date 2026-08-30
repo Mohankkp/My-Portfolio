@@ -5,8 +5,22 @@ EVPN-VXLAN gives you a Layer-2 service over a Layer-3 leaf-spine fabric. EVPN (a
 ## The players
 
 - **VTEP** — VXLAN Tunnel Endpoint, the leaf switch that encaps/decaps. Identified by its VTEP IP (usually a loopback).
-- **VNI** — VXLAN Network Identifier, the 24-bit segment ID (~16M segments vs. 4094 VLANs).
-- **BGP-EVPN routes** — Type-2 (MAC/IP), Type-3 (multicast/flood list), Type-5 (IP prefix for routing).
+- **VNI** — VXLAN Network Identifier, the 24-bit segment ID (~16M segments vs. 4094 VLANs). An **L2VNI** carries a bridge domain; an **L3VNI** carries routed (VRF) traffic.
+- **RD / RT** — every EVPN instance carries a **Route Distinguisher** (makes overlapping tenant MAC/IP unique in BGP) and **Route Targets** (import/export policy that controls which VRFs/bridge domains a route lands in). RD keeps routes distinct; RT decides who imports them.
+
+## The EVPN route types
+
+EVPN is defined in RFC 7432; the ones you actually watch on a fabric:
+
+| Type | Name | Carries |
+|---|---|---|
+| **1** | Ethernet Auto-Discovery | Multi-homing: per-ES and per-EVI, enables fast withdrawal + aliasing |
+| **2** | MAC/IP Advertisement | A host's MAC (and optionally IP) → VTEP, VNI, and MAC-mobility sequence |
+| **3** | Inclusive Multicast (IMET) | The BUM flood list — who to replicate broadcast/unknown/multicast to |
+| **4** | Ethernet Segment | ES discovery + Designated Forwarder election for multi-homed links |
+| **5** | IP Prefix | Routed prefixes (L3VNI) — inter-subnet and external routing |
+
+Type-2 and Type-3 do the day-to-day L2 work; Type-1/Type-4 exist for multi-homing; Type-5 is how the fabric routes between subnets and to the outside.
 
 ## Control plane first
 
@@ -40,6 +54,17 @@ Broadcast, unknown-unicast, and multicast can't be unicast-encapsulated. Two opt
 ## Why ARP suppression matters
 
 Because every VTEP already has the MAC/IP bindings from Type-2 routes, a leaf can answer ARP requests **locally** instead of flooding them across the fabric. On a large fabric this removes a huge amount of broadcast — a concrete example of the control plane eliminating data-plane work.
+
+## Inter-subnet routing: symmetric vs. asymmetric IRB
+
+To route *between* subnets, VTEPs use IRB (Integrated Routing and Bridging), usually with a **distributed anycast gateway** — every leaf shares the same gateway IP+MAC per subnet, so a host's default gateway is always its own local leaf (no hair-pinning to a central router).
+
+- **Asymmetric IRB:** the ingress leaf routes *and* bridges into the destination VNI, then the egress leaf only bridges. Simple, but every leaf must be configured with every VNI it might talk to (route-in, bridge-out mismatch → "asymmetric").
+- **Symmetric IRB:** ingress routes into a shared **L3VNI** (a transit VRF), the packet crosses the fabric in that L3VNI, and the egress leaf routes out to the local subnet. Both directions do route→route (symmetric). It scales far better — leaves only need the VNIs of locally attached subnets plus the common L3VNI — and is the standard choice on large fabrics.
+
+## MAC mobility (when a host moves)
+
+When a VM migrates from leaf A to leaf B, both could momentarily advertise the same MAC. The Type-2 route carries a **MAC Mobility extended community with a sequence number**; the higher sequence wins, so the fabric converges on the new location and the stale binding is withdrawn. A host that flaps between leaves repeatedly trips **MAC-move damping**, which flags a likely loop or duplicate rather than chasing it forever.
 
 ## The mental model
 

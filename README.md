@@ -34,6 +34,7 @@ Connect), and network automation (Python, AWS).
 - [What happens when a spine switch fails?](writeups/spine-failure-convergence.md)
 - [BGP is Established, but traffic is still broken](writeups/bgp-established-traffic-broken.md)
 - [Designing networks for AI/GPU workloads](writeups/ai-gpu-network-design.md)
+- [What actually happens inside an Internet Exchange Point](writeups/internet-exchange-point.md)
 
 ## Labs
 

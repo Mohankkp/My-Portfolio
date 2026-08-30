@@ -21,11 +21,15 @@ Classic ECMP hashes a flow to one path (see [ECMP in a Clos network](ecmp-clos.m
 
 ## Consequence 2: the network must be lossless
 
-TCP tolerates loss; collective libraries running over RDMA do not — a drop triggers expensive retransmission that stalls the step. So AI fabrics run **RoCEv2 (RDMA over Converged Ethernet)** with:
-- **PFC** (Priority Flow Control) — pause a class of traffic instead of dropping it.
-- **ECN + DCQCN** — mark packets early so senders slow down *before* buffers overflow.
+TCP tolerates loss; collective libraries running over RDMA do not — historically a single drop triggered a **go-back-N** retransmission that re-sends everything after the lost packet, stalling the step badly. So AI fabrics run **RoCEv2** (RDMA over Converged Ethernet — the InfiniBand transport riding inside UDP, destination port **4791**, over routable IP) and engineer for losslessness with two cooperating mechanisms:
 
-The design goal shifts from "absorb loss gracefully" to "never drop the RDMA class."
+**PFC (Priority Flow Control, 802.1Qbb)** — per-priority PAUSE. When a switch's ingress buffer for the RDMA class fills, it sends a PAUSE *upstream* to stop that class only, so bulk traffic never forces a drop of RDMA. Two hazards to design around:
+- **Head-of-line blocking** — PAUSE stops a whole priority on a link, not just the one flow that caused congestion.
+- **PFC deadlock** — cyclic buffer dependencies (often via a CLOS with unexpected traffic loops) where switches PAUSE each other in a ring and traffic wedges permanently. Deadlock avoidance (or watchdogs that break it) is a real design constraint.
+
+**ECN + DCQCN** — the *proactive* half. Switches mark packets with ECN as queues build; the receiver reflects that back via **CNP** (Congestion Notification Packets); the sender's NIC then ramps its rate down (and slowly back up). DCQCN is the widely used control loop that ties ECN marking to sender rate so congestion is smoothed **before** buffers hit the PFC threshold. Well-tuned, ECN does the everyday work and PFC is the last-resort safety net — you want to lean on ECN and rarely trigger PFC.
+
+The design goal shifts from "absorb loss gracefully" to "never drop the RDMA class, and rarely even PAUSE it."
 
 ## Consequence 3: low oversubscription, rail-optimized topology
 
@@ -40,9 +44,16 @@ Web fabrics are often oversubscribed (e.g. 3:1 at the leaf) because not all host
         (each GPU NIC -> its own rail)
 ```
 
-## Consequence 4: telemetry and topology awareness
+## Consequence 4: line-rate is the baseline, not the peak
 
-Because the slowest link caps the whole job, you need **fine-grained telemetry** — per-queue depth, ECN marks, PFC pause counts — to find the one hot link. And the training scheduler benefits from **topology awareness**: place ranks that communicate heavily close together so collectives stay within a rail or a leaf.
+In a web fabric, average utilization is modest and bursts are absorbed by buffers. In a training fabric the collective phase drives links to **line rate** — 100% of 400G — sustained, on many links at once. That reframes the switch's job:
+- **Buffering** is about surviving microbursts at line rate without dropping the RDMA class, not about long-term queueing. Deep buffers help absorb incast (many GPUs → one) during all-reduce.
+- **Cut-through** forwarding minimizes per-hop latency, which matters because collective completion is latency- *and* bandwidth-bound.
+- **Incast** is the signature failure: an all-reduce/all-gather step has many senders targeting one receiver simultaneously, overflowing one egress queue. ECN/DCQCN and careful buffer allocation exist largely to survive incast.
+
+## Consequence 5: telemetry and topology awareness
+
+Because the slowest link caps the whole job, you need **fine-grained telemetry** — per-queue depth, ECN mark counts, PFC pause/CNP counters, and per-flow path — to find the one hot link fast. In-band telemetry (INT) that stamps per-hop latency onto packets is increasingly used for exactly this. And the training scheduler benefits from **topology awareness**: place ranks that communicate heavily close together so collectives stay within a rail or a leaf, cutting both hop count and the chance of cross-fabric congestion.
 
 ## Design summary
 

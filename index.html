@@ -266,6 +266,7 @@
     <a href="#focus">What I Build</a>
     <a href="#cases">Case Studies</a>
     <a href="#labs">Design Labs</a>
+    <a href="#academic">Academic Projects</a>
     <a href="#deepdives">Deep Dives</a>
     <a href="#approach">Approach</a>
     <a href="#contact">Contact</a>
@@ -667,6 +668,54 @@ Production issue                PASS / FAIL --> Production</pre>
     </div>
   </section>
 
+  <!-- ACADEMIC PROJECTS -->
+  <section id="academic">
+    <span class="section-tag">Foundations</span>
+    <h2>Academic Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Migration as a Service</h3>
+        <p>Wrote a Python script emulating an SDN model-based controller (similar to OpenDaylight) that migrates user-specified VMs between clouds within the same subnet. YAML input drives an Ansible playbook that provisions tunneling infrastructure; a runtime model maintains system state at any point in time.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Jinja2</span><span class="tag">Ansible</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Migration-as-a-Service" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Example Bot</h3>
+        <p>Built a chatbot with Mattermost as the chat server, deployed on Kubernetes. Implemented a REST API to fetch detailed descriptions of user-requested libraries and APIs.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Mattermost</span><span class="tag">Ansible</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Library-Bot" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Switch Fabrics &amp; Server Load Balancing in Data Center</h3>
+        <p>Configured multi-tenant Leaf-Spine (Fat-tree) topology with inter-tenant communication. Implemented a BGP-EVPN control plane, ARP suppression, and per-tenant dynamic load balancing.</p>
+        <div class="tags"><span class="tag">Arista EOS</span><span class="tag">BGP-EVPN</span><span class="tag">MP-BGP</span><span class="tag">Load Balancer</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Peer-to-Peer File Sharing with Centralized Index</h3>
+        <p>Developed a Registration Server and Peer Clients in Python using socket programming. Built a multi-threaded model that works with multiple peers to upload and download the latest RFCs.</p>
+        <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Socket Programming</span><span class="tag">Python</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Peer_to_Peer_Network_with_Centralized_Index" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Database Management System for a Publishing House</h3>
+        <p>Designed a database system for a publishing house to facilitate online transactions and distributions, and worked to efficiently detect anomalies that caused transaction failures.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">MariaDB</span></div>
+      </div>
+
+      <div class="card">
+        <h3>File Sharing between Remote Systems</h3>
+        <p>Created a secure FTP over UDP sockets using the Go-Back-N ARQ protocol in Python, then evaluated its performance and error-control capability during data transmission.</p>
+        <div class="tags"><span class="tag">Go-Back-N ARQ</span><span class="tag">UDP</span><span class="tag">Python</span></div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- DEEP DIVES -->
   <section id="deepdives">
     <span class="section-tag">Depth over breadth</span>
@@ -735,14 +784,15 @@ Production issue                PASS / FAIL --> Production</pre>
   const bgMap = {
     intro:      '#312450',
     featured:   '#382c5c',
-    experience: '#453060',
-    skills:     '#573463',
-    focus:      '#6a3a5c',
-    cases:      '#7a3f4a',
-    labs:       '#834b2e',
-    deepdives:  '#82571d',
-    approach:   '#7c6016',
-    contact:    '#756814'
+    experience: '#433060',
+    skills:     '#523463',
+    focus:      '#643a5d',
+    cases:      '#743e4f',
+    labs:       '#7f4339',
+    academic:   '#834f28',
+    deepdives:  '#805a1c',
+    approach:   '#7a6216',
+    contact:    '#736a14'
   };
   const allSections = document.querySelectorAll('#main section');
   const observer = new IntersectionObserver(entries => {

@@ -11,9 +11,9 @@
 <style>
   :root {
     --bg: #312450;
-    --text: #cfc9e6;
+    --text: #f1edf8;
     --heading: #ffffff;
-    --muted: #9a92b8;
+    --muted: #d3ccdf;
     --accent: #d17ab0;
     --accent-2: #8b6bd0;
     --sidebar-bg: #261c3e;
@@ -93,7 +93,7 @@
   #main { margin-left: var(--sidebar-w); position: relative; z-index: 1; }
   section { padding: 5.5rem 6vw; max-width: 1120px; margin: 0 auto; }
   section:nth-of-type(even) { background: rgba(255,255,255,.03); backdrop-filter: blur(2px); }
-  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .8rem; text-shadow: 0 0 18px rgba(209,122,176,.5); }
+  .section-tag { color: #ffe3f1; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; font-size: .8rem; text-shadow: 0 0 18px rgba(0,0,0,.35); }
   section h2 { font-size: 2.6rem; margin: .3rem 0 1.6rem; position: relative; }
   section h2::after { content: ""; display: block; width: 48px; height: 4px; margin-top: .6rem; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
   .lead-copy { max-width: 760px; }
@@ -155,8 +155,9 @@
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem; }
-  .tag { font-size: .78rem; padding: .28rem .7rem; border-radius: 50px; background: rgba(183,78,145,.14); color: var(--accent); font-weight: 600; }
-  .repo-link { display: inline-block; margin-top: 1rem; font-size: .9rem; font-weight: 600; letter-spacing: .03em; }
+  .tag { font-size: .78rem; padding: .28rem .7rem; border-radius: 50px; background: rgba(255,255,255,.16); color: #ffffff; font-weight: 600; }
+  .repo-link { display: inline-block; margin-top: 1rem; font-size: .9rem; font-weight: 700; letter-spacing: .03em; color: #ffe3f1; text-decoration: underline; text-underline-offset: 3px; }
+  .repo-link:hover { color: #ffffff; }
 
   /* Case studies */
   .case {
@@ -195,7 +196,7 @@
 
   /* Principles + problems */
   .principle-grid, .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
-  .principle h4, .problem h4 { font-size: 1.12rem; margin: 0 0 .4rem; color: var(--accent); }
+  .principle h4, .problem h4 { font-size: 1.12rem; margin: 0 0 .4rem; color: #ffffff; }
   .principle p, .problem p { margin: 0; font-size: 1rem; }
   .subhead { font-family: "Raleway", sans-serif; font-weight: 700; color: #fff; font-size: 1.4rem; margin: 2.4rem 0 1rem; }
 
@@ -681,14 +682,14 @@ Production issue                PASS / FAIL --> Production</pre>
   const links = document.querySelectorAll('#sidebar nav a');
   const bgMap = {
     intro:      '#312450',
-    experience: '#3d2f66',
-    skills:     '#513473',
-    focus:      '#6e3a6f',
-    cases:      '#8a3d5f',
-    labs:       '#9e4548',
-    deepdives:  '#ab5a30',
-    approach:   '#b0701f',
-    contact:    '#b5851a'
+    experience: '#3a2c5e',
+    skills:     '#46305f',
+    focus:      '#5a3563',
+    cases:      '#6f3a51',
+    labs:       '#7c3f3c',
+    deepdives:  '#834b26',
+    approach:   '#7d5a18',
+    contact:    '#756415'
   };
   const allSections = document.querySelectorAll('#main section');
   const observer = new IntersectionObserver(entries => {

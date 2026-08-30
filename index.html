@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mohan Kumar &mdash; Network Development Engineer</title>
-<meta name="description" content="Mohan Kumar — Network Development Engineer specializing in cloud networking, BGP/EVPN/VXLAN, and network automation." />
+<title>Mohan Kumar &mdash; Network Infrastructure Engineer</title>
+<meta name="description" content="Mohan Kumar — Network Infrastructure Engineer. Building reliable, scalable, automated network infrastructure at cloud scale. Data center networking, BGP/EVPN-VXLAN, network automation." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Raleway:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #312450;
-    --text: #c8c2de;
+    --text: #cfc9e6;
     --heading: #ffffff;
     --muted: #9a92b8;
     --accent: #d17ab0;
     --accent-2: #8b6bd0;
     --sidebar-bg: #261c3e;
-    --sidebar-text: #c8c2de;
-    --card-bg: #3a2c5e;
+    --sidebar-text: #cfc9e6;
     --border: rgba(255,255,255,0.12);
-    --sidebar-w: 300px;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sidebar-w: 290px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -28,16 +28,20 @@
     margin: 0;
     font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.8;
     color: var(--text);
     background-color: #312450;
     transition: background-color 1s ease;
   }
+  h1, h2, h3, h4 { font-family: "Raleway", sans-serif; color: var(--heading); letter-spacing: 0.02em; }
+  a { color: var(--accent); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--accent-2); }
+
   /* Floating glow blobs */
   body::before, body::after {
     content: ""; position: fixed; border-radius: 50%; z-index: 0;
-    filter: blur(90px); opacity: .35; pointer-events: none;
+    filter: blur(90px); opacity: .32; pointer-events: none;
   }
   body::before {
     width: 480px; height: 480px; top: -120px; right: -80px;
@@ -51,66 +55,76 @@
   }
   @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-60px,80px); } }
   @keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(80px,-60px); } }
-  h1, h2, h3 { font-family: "Raleway", sans-serif; color: var(--heading); letter-spacing: 0.02em; }
-  a { color: var(--accent); text-decoration: none; transition: color .2s; }
-  a:hover { color: var(--accent-2); }
 
   /* ---------- Sidebar ---------- */
   #sidebar {
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
+    position: fixed; top: 0; left: 0; bottom: 0;
     width: var(--sidebar-w);
-    background: var(--sidebar-bg);
     background-image: linear-gradient(160deg, #33254f 0%, #201634 100%);
     color: var(--sidebar-text);
-    display: flex;
-    flex-direction: column;
-    padding: 2.5rem 2rem;
-    z-index: 100;
+    display: flex; flex-direction: column;
+    padding: 2.2rem 1.6rem; z-index: 100; overflow-y: auto;
   }
-  #sidebar .brand { text-align: center; margin-bottom: 2rem; }
+  #sidebar .brand { text-align: center; margin-bottom: 1.5rem; }
   #sidebar .avatar {
-    width: 120px; height: 120px; border-radius: 50%;
-    margin: 0 auto 1.2rem;
-    display: flex; align-items: center; justify-content: center;
-    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.6rem; color: #fff;
+    width: 104px; height: 104px; border-radius: 50%;
+    margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;
+    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.3rem; color: #fff;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     box-shadow: 0 10px 30px rgba(183,78,145,.35);
   }
-  #sidebar h1 { color: #fff; font-size: 1.6rem; margin: 0; }
-  #sidebar .tagline { color: var(--accent); font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; margin-top: .5rem; }
-  #sidebar nav { margin-top: 1rem; }
+  #sidebar h1 { color: #fff; font-size: 1.4rem; margin: 0; }
+  #sidebar .tagline { color: var(--accent); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-top: .5rem; line-height: 1.5; }
+  #sidebar nav { margin-top: .8rem; }
   #sidebar nav a {
     display: block; color: var(--sidebar-text);
-    padding: .7rem 1rem; border-radius: 8px;
-    font-size: .95rem; letter-spacing: .05em; text-transform: uppercase;
+    padding: .55rem 1rem; border-radius: 8px;
+    font-size: .82rem; letter-spacing: .05em; text-transform: uppercase;
     transition: background .2s, color .2s, padding-left .2s;
   }
   #sidebar nav a:hover, #sidebar nav a.active {
     background: rgba(183,78,145,.15); color: #fff; padding-left: 1.3rem;
   }
-  #sidebar .socials { margin-top: auto; padding-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
-  #sidebar .socials a { color: var(--sidebar-text); font-size: .85rem; }
-  #sidebar .copyright { text-align: center; color: var(--muted); font-size: .72rem; margin-top: 1rem; }
+  #sidebar .socials { margin-top: auto; padding-top: 1.2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  #sidebar .socials a { color: var(--sidebar-text); font-size: .8rem; }
+  #sidebar .copyright { text-align: center; color: var(--muted); font-size: .68rem; margin-top: .8rem; }
 
   /* ---------- Content ---------- */
   #main { margin-left: var(--sidebar-w); position: relative; z-index: 1; }
-  section { padding: 5.5rem 6vw; max-width: 1080px; margin: 0 auto; }
+  section { padding: 5.5rem 6vw; max-width: 1120px; margin: 0 auto; }
   section:nth-of-type(even) { background: rgba(255,255,255,.03); backdrop-filter: blur(2px); }
-  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; text-shadow: 0 0 18px rgba(209,122,176,.5); }
-  section h2 { font-size: 2.6rem; margin: .3rem 0 1.8rem; position: relative; }
+  .section-tag { color: var(--accent); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: .8rem; text-shadow: 0 0 18px rgba(209,122,176,.5); }
+  section h2 { font-size: 2.6rem; margin: .3rem 0 1.6rem; position: relative; }
   section h2::after { content: ""; display: block; width: 48px; height: 4px; margin-top: .6rem; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .lead-copy { max-width: 760px; }
 
   /* Hero */
   #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
   #intro h2 {
-    font-size: 3.9rem; line-height: 1.1;
+    font-size: 3.9rem; line-height: 1.08;
     background: linear-gradient(120deg, #ffffff 20%, #d17ab0 55%, #8b6bd0 90%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
   }
   #intro h2::after { display: none; }
-  #intro .lead { font-size: 1.55rem; color: var(--accent-2); font-weight: 400; margin: 0 0 1.5rem; }
+  #intro .role { font-family: "Raleway", sans-serif; font-weight: 700; color: #fff; font-size: 1.25rem; letter-spacing: .01em; margin: .2rem 0 1rem; }
+  #intro .lead { font-size: 1.5rem; color: var(--accent-2); font-weight: 500; margin: 0 0 1.4rem; max-width: 720px; }
+
+  /* Metrics */
+  .metrics { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0 1.8rem; }
+  .metric {
+    flex: 1 1 150px; padding: 1.2rem 1.3rem; border-radius: 14px;
+    background: rgba(255,255,255,.05); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .metric .num {
+    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2rem; line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .metric .label { display: block; margin-top: .4rem; font-size: .82rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+
   .btn {
     display: inline-block; margin-top: 1rem; padding: .85rem 1.8rem;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -120,8 +134,71 @@
   .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(183,78,145,.45); }
   .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,.35); box-shadow: none; }
   .btn-outline:hover { background: rgba(255,255,255,.08); box-shadow: 0 0 20px rgba(255,255,255,.15); }
+  .btn-row { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.2rem; }
 
-  /* Timeline (experience + education) */
+  /* Grid + cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.4rem; }
+  .card {
+    background: rgba(255,255,255,.05); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 16px;
+    padding: 1.6rem; transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 45px rgba(0,0,0,.4), 0 0 30px rgba(183,78,145,.25); border-color: rgba(209,122,176,.6); }
+  .card h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
+  .card p { margin: 0 0 1rem; font-size: 1.02rem; }
+  .card .icon { font-size: 1.8rem; margin-bottom: .5rem; }
+  .card ul.mini { margin: .3rem 0 0; padding-left: 1.1rem; }
+  .card ul.mini li { font-size: .96rem; margin-bottom: .25rem; color: var(--text); }
+  .num-badge {
+    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.2rem; line-height: 1; margin-bottom: .5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem; }
+  .tag { font-size: .78rem; padding: .28rem .7rem; border-radius: 50px; background: rgba(183,78,145,.14); color: var(--accent); font-weight: 600; }
+  .repo-link { display: inline-block; margin-top: 1rem; font-size: .9rem; font-weight: 600; letter-spacing: .03em; }
+
+  /* Case studies */
+  .case {
+    background: rgba(255,255,255,.05); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 18px;
+    padding: 2rem 2rem 1.8rem; margin-bottom: 1.8rem;
+  }
+  .case h3 { font-size: 1.55rem; margin: .2rem 0 1rem; }
+  .case .phase { color: var(--accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .74rem; display: block; margin: 1.2rem 0 .3rem; }
+  .case p { margin: .2rem 0; }
+  .case .impact {
+    margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(183,78,145,.16), rgba(94,66,166,.16));
+    border: 1px solid rgba(209,122,176,.3);
+  }
+  .case .impact strong { color: #fff; }
+  pre.diagram {
+    font-family: var(--mono); font-size: .82rem; line-height: 1.5; color: #d7c8f0;
+    background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.1); border-radius: 12px;
+    padding: 1.1rem 1.2rem; overflow-x: auto; margin: .8rem 0 .4rem; white-space: pre;
+  }
+
+  /* Deep dives */
+  .dive-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+  .dive {
+    display: flex; gap: .9rem; align-items: flex-start;
+    padding: 1.1rem 1.2rem; border-radius: 12px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    transition: border-color .2s, transform .2s;
+  }
+  .dive:hover { border-color: rgba(209,122,176,.5); transform: translateY(-3px); }
+  .dive .dot { font-family: var(--mono); color: var(--accent); font-weight: 600; }
+  .dive .t { font-family: "Raleway", sans-serif; font-weight: 700; color: #fff; font-size: 1.02rem; }
+  .dive .s { font-size: .9rem; color: var(--muted); display: block; }
+
+  /* Principles + problems */
+  .principle-grid, .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+  .principle h4, .problem h4 { font-size: 1.12rem; margin: 0 0 .4rem; color: var(--accent); }
+  .principle p, .problem p { margin: 0; font-size: 1rem; }
+  .subhead { font-family: "Raleway", sans-serif; font-weight: 700; color: #fff; font-size: 1.4rem; margin: 2.4rem 0 1rem; }
+
+  /* Timeline */
   .timeline { border-left: 2px solid var(--border); margin-left: .5rem; }
   .entry { position: relative; padding: 0 0 2.2rem 2rem; }
   .entry::before {
@@ -131,44 +208,23 @@
   }
   .entry h3 { margin: 0; font-size: 1.4rem; }
   .entry .role { color: var(--accent-2); font-weight: 600; }
-  .entry .meta { color: var(--muted); font-size: .88rem; margin: .1rem 0 .7rem; }
+  .entry .meta { color: var(--muted); font-size: .92rem; margin: .1rem 0 .7rem; }
   .entry ul { margin: .4rem 0 0; padding-left: 1.1rem; }
   .entry li { margin-bottom: .35rem; }
 
-  /* Projects */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
-  .card {
-    background: rgba(255,255,255,.05); backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,.12); border-radius: 16px;
-    padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
-  }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 45px rgba(0,0,0,.4), 0 0 30px rgba(183,78,145,.25); border-color: rgba(209,122,176,.6); }
-  .card h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
-  .card p { margin: 0 0 1rem; font-size: 1.02rem; }
-  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .tag { font-size: .72rem; padding: .25rem .6rem; border-radius: 50px; background: rgba(183,78,145,.1); color: var(--accent); font-weight: 600; }
-  .repo-link { display: inline-block; margin-top: 1rem; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
-  .strength .strength-num {
-    font-family: "Raleway", sans-serif; font-weight: 800; font-size: 2.4rem; line-height: 1;
-    margin-bottom: .6rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-  }
-
   /* Skills */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
-  .skill-block h3 { font-size: 1rem; margin: 0 0 .7rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; }
+  .skill-block h3 { font-size: 1.05rem; margin: 0 0 .7rem; }
   .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
   .chip { font-size: .92rem; font-weight: 500; padding: .4rem .9rem; border-radius: 8px; background: rgba(255,255,255,.08); color: #eae6f5; }
   .certs { margin-top: 2rem; }
   .certs li { margin-bottom: .3rem; }
 
   /* Contact */
-  .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
   .contact-links a { display: flex; flex-direction: column; padding: 1.2rem 1.4rem; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(255,255,255,.04); backdrop-filter: blur(10px); color: var(--text); transition: border-color .2s, transform .2s, box-shadow .2s; }
   .contact-links a:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 0 24px rgba(183,78,145,.3); }
-  .contact-links .label { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .contact-links .label { font-size: .76rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
   .contact-links .value { color: var(--heading); font-weight: 600; word-break: break-all; }
   .fin { text-align: center; color: var(--muted); margin-top: 3rem; font-family: "Raleway", sans-serif; }
 
@@ -180,9 +236,7 @@
   #menu-toggle { display: none; }
   @media (max-width: 900px) {
     :root { --sidebar-w: 0px; }
-    #sidebar {
-      transform: translateX(-100%); width: 280px; transition: transform .3s;
-    }
+    #sidebar { transform: translateX(-100%); width: 270px; transition: transform .3s; }
     #sidebar.open { transform: translateX(0); }
     #main { margin-left: 0; }
     #menu-toggle {
@@ -192,7 +246,8 @@
       font-size: 1.4rem; cursor: pointer;
     }
     section { padding: 4rem 7vw; }
-    #intro h2 { font-size: 2.2rem; }
+    #intro h2 { font-size: 2.6rem; }
+    body { font-size: 18px; }
   }
 </style>
 </head>
@@ -204,19 +259,22 @@
   <div class="brand">
     <div class="avatar">MK</div>
     <h1>Mohan Kumar</h1>
-    <div class="tagline">Network &middot; Cloud &middot; Automation</div>
+    <div class="tagline">Network Infrastructure Engineer</div>
   </div>
   <nav>
-    <a href="#intro">About</a>
-    <a href="#strengths">Strengths</a>
+    <a href="#intro">Home</a>
+    <a href="#focus">What I Build</a>
+    <a href="#cases">Case Studies</a>
+    <a href="#labs">Design Labs</a>
+    <a href="#deepdives">Deep Dives</a>
+    <a href="#approach">Approach</a>
     <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="socials">
     <a href="https://www.linkedin.com/in/mohan-kumar-kc/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Mohankkp" target="_blank" rel="noopener">GitHub</a>
     <a href="mailto:mohan.chamraj@gmail.com">Email</a>
   </div>
   <div class="copyright">&copy; 2026 Mohan Kumar</div>
@@ -224,170 +282,320 @@
 
 <main id="main">
 
+  <!-- HERO -->
   <section id="intro">
-    <span class="section-tag">Network Development Engineer</span>
-    <h2>Hi, I'm Mohan Kumar.</h2>
-    <p class="lead">Reliable &middot; Scalable &middot; Automation-Driven Networks</p>
-    <p>Network engineer with 5+ years building reliable, automated cloud infrastructure at scale. Proficient in BGP, EVPN, VXLAN, and MPLS, with hands-on expertise building software-driven infrastructure using Python. Currently seeking challenges in high-availability network design, AI/ML infrastructure, and the systems that move data fast and reliably across global fabrics.</p>
-    <p>Before AWS, I diagnosed complex datacenter networks at Arista, analyzed hyperscaler network performance at Nutanix, and shipped safety-critical automotive software at Robert Bosch under AUTOSAR/MISRA C. I hold an MS in Computer Networking from NC State University and enjoy the intersection of protocols, code, and scale &mdash; turning fragile manual workflows into resilient, ZTP-driven systems that just work.</p>
-    <p style="display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.2rem;">
+    <span class="section-tag">Network Infrastructure Engineer</span>
+    <h2>Hi, I'm Mohan.</h2>
+    <div class="role">Data Center Networking &middot; Cloud Connectivity &middot; Network Automation</div>
+    <p class="lead">I build and automate reliable, scalable network infrastructure at cloud scale.</p>
+    <p class="lead-copy">5+ years designing, deploying, and operating large-scale data center and cloud networks &mdash; BGP, EVPN-VXLAN, MPLS, and Direct Connect infrastructure across Juniper, Arista, and Cisco platforms, with a strong software-engineering approach to automation and reliability.</p>
+
+    <div class="metrics">
+      <div class="metric"><span class="num">5+</span><span class="label">Years Network Engineering</span></div>
+      <div class="metric"><span class="num">120+</span><span class="label">Direct Connect Locations</span></div>
+      <div class="metric"><span class="num">100G/400G</span><span class="label">Network Infrastructure</span></div>
+      <div class="metric"><span class="num">Python</span><span class="label">+ AWS Automation</span></div>
+    </div>
+
+    <div class="btn-row">
       <a class="btn" href="https://drive.google.com/" target="_blank" rel="noopener">View Resume</a>
-      <a class="btn btn-outline" href="mailto:mohan.chamraj@gmail.com">Get in touch</a>
-    </p>
+      <a class="btn btn-outline" href="#cases">See My Work</a>
+    </div>
   </section>
 
-  <section id="strengths">
-    <span class="section-tag">What I bring</span>
-    <h2>Core Strengths</h2>
+  <!-- WHAT I BUILD -->
+  <section id="focus">
+    <span class="section-tag">My technical identity</span>
+    <h2>What I Build</h2>
     <div class="grid">
-      <div class="card strength">
-        <div class="strength-num">01</div>
-        <h3>Protocol &amp; Routing Depth</h3>
-        <p>Strong command of TCP/IP, BGP, OSPF/IS-IS, and EVPN/VXLAN &mdash; reasoning about how packets actually move rather than memorizing configs. The foundation everything else builds on.</p>
+      <div class="card">
+        <div class="icon">&#127760;</div>
+        <h3>Large-Scale Networking</h3>
+        <ul class="mini">
+          <li>BGP / MP-BGP</li>
+          <li>EVPN-VXLAN</li>
+          <li>OSPF / IS-IS &middot; MPLS</li>
+          <li>Clos / Leaf-Spine fabrics</li>
+          <li>Data center networking</li>
+        </ul>
       </div>
-      <div class="card strength">
-        <div class="strength-num">02</div>
-        <h3>Automation &amp; Infrastructure-as-Code</h3>
-        <p>Python, Ansible, ZTP, Jinja2, and NETCONF/REST APIs to turn manual CLI work into repeatable, version-controlled provisioning &mdash; the difference between a network you operate and one you scale.</p>
+      <div class="card">
+        <div class="icon">&#9729;&#65039;</div>
+        <h3>Cloud Networking</h3>
+        <ul class="mini">
+          <li>AWS Direct Connect</li>
+          <li>Multi-region connectivity</li>
+          <li>Cloud interconnect</li>
+          <li>PoP architecture</li>
+          <li>Customer connectivity</li>
+        </ul>
       </div>
-      <div class="card strength">
-        <div class="strength-num">03</div>
-        <h3>Troubleshooting &amp; Root-Cause Analysis</h3>
-        <p>Systematically isolating faults across L1&ndash;L7 under pressure with packet captures, telemetry, and log correlation &mdash; restoring production networks and delivering clean RCAs.</p>
+      <div class="card">
+        <div class="icon">&#129302;</div>
+        <h3>Network Automation</h3>
+        <ul class="mini">
+          <li>Python &middot; REST / NETCONF APIs</li>
+          <li>Ansible &middot; Jinja2</li>
+          <li>AWS Lambda &middot; EventBridge</li>
+          <li>Deployment orchestration</li>
+          <li>Zero Touch Provisioning</li>
+        </ul>
       </div>
-      <div class="card strength">
-        <div class="strength-num">04</div>
-        <h3>Multi-Vendor Platform Experience</h3>
-        <p>Hands-on across a broad range of production hardware and network operating systems &mdash; including Arista EOS, Cisco NX-OS, Zosma, and Juniper MX304 &mdash; from bring-up and migration to day-to-day operations.</p>
+      <div class="card">
+        <div class="icon">&#128737;&#65039;</div>
+        <h3>Reliability</h3>
+        <ul class="mini">
+          <li>Automated network validation</li>
+          <li>Configuration drift detection</li>
+          <li>Failure prevention</li>
+          <li>Monitoring &amp; alerting</li>
+          <li>Rollback strategies</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">&#128200;</div>
+        <h3>Capacity Engineering</h3>
+        <ul class="mini">
+          <li>Capacity forecasting</li>
+          <li>100G / 400G expansion</li>
+          <li>Port utilization analysis</li>
+          <li>Regional scaling</li>
+          <li>Growth planning</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">&#129513;</div>
+        <h3>Systems Engineering</h3>
+        <ul class="mini">
+          <li>Event-driven architecture</li>
+          <li>Infrastructure orchestration</li>
+          <li>Observability</li>
+          <li>Production operations</li>
+          <li>Design for scale &amp; failure</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="experience">
-    <span class="section-tag">Where I've worked</span>
-    <h2>Experience</h2>
-    <div class="timeline">
+  <!-- CASE STUDIES -->
+  <section id="cases">
+    <span class="section-tag">How I think</span>
+    <h2>Engineering Case Studies</h2>
+    <p class="lead-copy">Anonymized studies based on production-scale networking work. Diagrams are illustrative and contain no proprietary detail.</p>
 
+    <div class="case">
+      <div class="num-badge">01</div>
+      <h3>Scaling Cloud Connectivity to 120+ Locations</h3>
+      <div class="tags"><span class="tag">Direct Connect</span><span class="tag">Capacity</span><span class="tag">100G/400G</span><span class="tag">BGP</span></div>
+      <span class="phase">Problem</span>
+      <p>How do you scale physical network connectivity across hundreds of PoPs and regions while keeping reliability and operational consistency high &mdash; without deployment cycle times ballooning as the fleet grows?</p>
+      <span class="phase">Architecture</span>
+      <pre class="diagram">                AWS Cloud
+                    |
+              Direct Connect
+                    |
+        +-----------+-----------+
+        |           |           |
+       PoP         PoP         PoP
+        |           |           |
+     100G/400G   100G/400G   100G/400G
+        |           |           |
+      Fabric      Fabric      Fabric</pre>
+      <span class="phase">Engineering decisions</span>
+      <p>Capacity forecasting from utilization trends &middot; 100G/400G port expansion at constrained PoPs &middot; deployment sequencing to bound blast radius &middot; validation gates and rollback paths before production cutover.</p>
+      <div class="impact"><strong>Impact:</strong> Contributed to scaling Direct Connect infrastructure across <strong>120+ locations</strong>, delivering 100G/400G services across global PoPs while maintaining high-availability and capacity SLAs.</div>
+    </div>
+
+    <div class="case">
+      <div class="num-badge">02</div>
+      <h3>Automating Network Deployment Validation</h3>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Reliability</span></div>
+      <span class="phase">Problem</span>
+      <p>Manual post-deployment validation was slow and error-prone &mdash; the kind of repetitive check where a single missed mismatch becomes a production incident.</p>
+      <span class="phase">Before &rarr; After</span>
+      <pre class="diagram">BEFORE                          AFTER
+Deploy                          Deploy
+  |                               |
+Manual validation               Automated validation
+  |                               |  (cross-connect / config
+Human error                      |   consistency / drift)
+  |                               |
+Production issue                PASS / FAIL --> Production</pre>
+      <span class="phase">Solution</span>
+      <p>Built Python-based validation into the deployment pipeline &mdash; expected-vs-actual state checks, configuration consistency, and drift detection that gate a change before it reaches production.</p>
+      <div class="impact"><strong>Impact:</strong> Shifted validation from reactive troubleshooting to <strong>failure prevention</strong>, cutting manual operational effort and reducing deployment cycle time from 6 months to 3.</div>
+    </div>
+
+    <div class="case">
+      <div class="num-badge">03</div>
+      <h3>Event-Driven Network Resource Reclamation</h3>
+      <div class="tags"><span class="tag">AWS</span><span class="tag">Lambda</span><span class="tag">EventBridge</span><span class="tag">Utilization</span></div>
+      <span class="phase">Problem</span>
+      <p>Polling for idle network resources meant constant API calls, delayed detection, and standing operational overhead &mdash; and underused capacity that inflated cost and constrained growth.</p>
+      <span class="phase">Why event-driven</span>
+      <pre class="diagram">Network resource state change
+              |
+          EventBridge
+              |
+            Lambda
+              |
+        Validate resource
+          /          \
+      Unused        Active
+        |              |
+     Reclaim        Retain</pre>
+      <span class="phase">Approach</span>
+      <p>Reacted to resource state changes instead of polling &mdash; immediate processing, state validation, and an automated reclaim/retain decision. Systems engineering applied to a networking problem.</p>
+      <div class="impact"><strong>Impact:</strong> Executed a data-driven migration and reclamation strategy that improved network resource utilization by <strong>35%</strong>.</div>
+    </div>
+
+    <div class="case">
+      <div class="num-badge">04</div>
+      <h3>Integrating LEO Satellite Infrastructure with Cloud Connectivity</h3>
+      <div class="tags"><span class="tag">ZTP</span><span class="tag">Deployment Automation</span><span class="tag">Scale</span></div>
+      <span class="phase">Problem</span>
+      <p>Onboarding a new class of edge racks (Direct-to-AWS for LEO satellite customers) meant provisioning consistent, validated infrastructure across many sites &mdash; fast, and without per-site manual toil.</p>
+      <span class="phase">Architecture</span>
+      <pre class="diagram">LEO / edge infrastructure
+          |
+   Network connectivity
+          |
+     Direct Connect
+          |
+     AWS infrastructure
+
+   Onboarded to centralized
+   orchestration --> ZTP-based
+   provisioning</pre>
+      <span class="phase">Approach</span>
+      <p>Onboarded the infrastructure to a centralized orchestration platform with Zero Touch Provisioning, standardizing bring-up and validation across sites so new racks came online consistently.</p>
+      <div class="impact"><strong>Impact:</strong> Enabled secure connectivity across <strong>120+ sites</strong> and cut deployment cycle time from <strong>6 months to 3</strong> through ZTP-based provisioning.</div>
+    </div>
+  </section>
+
+  <!-- DESIGN LABS -->
+  <section id="labs">
+    <span class="section-tag">Design, not just configure</span>
+    <h2>Network Design Labs</h2>
+    <p class="lead-copy">Independent architecture studies &mdash; how I approach designing networks from first principles, beyond any single employer.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="num-badge">05</div>
+        <h3>Global 3-Tier Data Center Network</h3>
+        <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
+        <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
+      </div>
+      <div class="card">
+        <div class="num-badge">06</div>
+        <h3>EVPN-VXLAN Fabric</h3>
+        <p>Multi-tenant fabric with a BGP-EVPN control plane, ARP suppression, and distributed anycast gateways.</p>
+        <div class="tags"><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">MP-BGP</span><span class="tag">Multi-tenancy</span></div>
+      </div>
+      <div class="card">
+        <div class="num-badge">07</div>
+        <h3>Global BGP Backbone</h3>
+        <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
+        <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
+      </div>
+      <div class="card">
+        <div class="num-badge">08</div>
+        <h3>400G AI Infrastructure Network</h3>
+        <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
+        <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVES -->
+  <section id="deepdives">
+    <span class="section-tag">Depth over breadth</span>
+    <h2>Technical Deep Dives</h2>
+    <p class="lead-copy">Short write-ups that trace a protocol or failure end to end &mdash; how I reason about networks, not how to configure them.</p>
+    <div class="dive-list">
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">Troubleshooting a BGP session that won't establish</span><span class="s">Physical &rarr; ARP &rarr; TCP/179 &rarr; OPEN &rarr; capabilities &rarr; routes &rarr; policy</span></span></div>
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">EVPN-VXLAN: from packet ingress to remote VTEP</span><span class="s">The full encapsulation and lookup journey across the fabric</span></span></div>
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">How ECMP actually distributes traffic in a Clos network</span><span class="s">Hashing, flow pinning, and polarization in leaf-spine</span></span></div>
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">What happens when a spine switch fails?</span><span class="s">Link detection &rarr; BGP withdrawal &rarr; ECMP recalculation &rarr; reconvergence</span></span></div>
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">BGP is Established, but traffic is still broken</span><span class="s">Where the data plane and control plane disagree</span></span></div>
+      <div class="dive"><span class="dot">&#9656;</span><span><span class="t">Designing networks for AI/GPU workloads</span><span class="s">Why AI traffic patterns reshape fabric design</span></span></div>
+    </div>
+  </section>
+
+  <!-- APPROACH: principles + problems -->
+  <section id="approach">
+    <span class="section-tag">How I operate</span>
+    <h2>Engineering Approach</h2>
+
+    <div class="subhead">Principles I follow</div>
+    <div class="principle-grid">
+      <div class="principle"><h4>Automate repetitive work</h4><p>If an engineer runs the same validation repeatedly, it should eventually become software.</p></div>
+      <div class="principle"><h4>Design for failure</h4><p>Assume components fail. Build systems that limit blast radius and recover predictably.</p></div>
+      <div class="principle"><h4>Measure before scaling</h4><p>Capacity decisions come from utilization, growth, and failure scenarios &mdash; not assumptions.</p></div>
+      <div class="principle"><h4>Make networks observable</h4><p>If you can't explain why traffic took a path, the system isn't observable enough.</p></div>
+      <div class="principle"><h4>Prevent over detect</h4><p>The best network incident is the one prevented before deployment.</p></div>
+    </div>
+
+    <div class="subhead">Problems I'm interested in solving</div>
+    <div class="problem-grid">
+      <div class="problem"><h4>Large-scale network infrastructure</h4><p>How do we build networks that scale to millions of endpoints while keeping performance predictable?</p></div>
+      <div class="problem"><h4>Network automation</h4><p>How can software eliminate repetitive operations and remove human error from the critical path?</p></div>
+      <div class="problem"><h4>AI infrastructure networking</h4><p>How should network architectures evolve for increasingly distributed GPU workloads?</p></div>
+      <div class="problem"><h4>Global backbone engineering</h4><p>How do we engineer connectivity and traffic across a globally distributed infrastructure?</p></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <span class="section-tag">Career progression</span>
+    <h2>Experience</h2>
+    <p class="lead-copy">Implementation &rarr; automation &rarr; scale &rarr; reliability &rarr; system design.</p>
+    <div class="timeline">
       <div class="entry">
         <h3>Amazon Web Services</h3>
         <div class="role">Network Development Engineer 2</div>
         <div class="meta">Seattle, WA &middot; Sept 2024 &ndash; Present</div>
         <ul>
-          <li>Led global rollout of Direct-to-AWS (D2A) racks enabling secure connectivity for LEO satellite customers across 120+ sites, ensuring scalable multi-site network expansion.</li>
-          <li>Onboarded Leo-Direct Connect infrastructure to a centralized orchestration platform enabling ZTP-based provisioning, reducing deployment cycle time from 6 months to 3 months.</li>
-          <li>Led deployment of 100G/400G Direct Connect services across global PoPs ensuring high availability and capacity SLAs.</li>
-          <li>Analyzed network resource utilization patterns and executed a customer migration strategy that improved network resource utilization by 35%.</li>
-          <li>Executed Juniper MX304 migration strategies for infrastructure upgrades, minimizing customer impact during architecture transitions.</li>
+          <li>Led rollout of Direct-to-AWS racks enabling secure connectivity for LEO satellite customers across 120+ sites.</li>
+          <li>Onboarded infrastructure to centralized orchestration with ZTP-based provisioning, cutting deployment cycle time from 6 months to 3.</li>
+          <li>Delivered 100G/400G Direct Connect services across global PoPs with high-availability and capacity SLAs.</li>
+          <li>Analyzed utilization patterns and executed a migration strategy that improved network resource utilization by 35%.</li>
+          <li>Executed Juniper MX304 migration strategies for infrastructure upgrades, minimizing customer impact.</li>
         </ul>
       </div>
-
       <div class="entry">
         <h3>Arista Networks</h3>
         <div class="role">Technical Solutions Engineer</div>
         <div class="meta">Cary, NC &middot; Dec 2022 &ndash; Aug 2024</div>
         <ul>
           <li>Diagnosed and resolved complex datacenter networking issues across BGP, VXLAN, EVPN, and L2/L3 systems.</li>
-          <li>Troubleshot network, software, and hardware issues with Arista products to provide Root Cause Analysis.</li>
+          <li>Delivered root-cause analysis on network, software, and hardware issues; restored connectivity during outages.</li>
           <li>Collaborated with Systems Engineers to develop fixes tailored to client-specific deployments.</li>
-          <li>Debugged production issues and restored network connectivity during outages.</li>
         </ul>
       </div>
-
       <div class="entry">
         <h3>Nutanix</h3>
         <div class="role">System Reliability Engineer Intern</div>
         <div class="meta">Durham, NC &middot; May 2022 &ndash; Aug 2022</div>
         <ul>
-          <li>Performed hyperscaler network performance analysis using Wireshark, tcpdump, MTR, iperf, and related tools.</li>
-          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and infrastructure reliability.</li>
+          <li>Performed hyperscaler network performance analysis using Wireshark, tcpdump, MTR, and iperf.</li>
+          <li>Deployed and validated Nutanix clusters in cloud environments for workload optimization and reliability.</li>
         </ul>
       </div>
-
       <div class="entry">
         <h3>Robert Bosch</h3>
         <div class="role">Software Engineer</div>
-        <div class="meta">Bengaluru, Karnataka, India &middot; Aug 2018 &ndash; May 2021</div>
+        <div class="meta">Bengaluru, India &middot; Aug 2018 &ndash; May 2021</div>
         <ul>
-          <li>Developed automotive software using AUTOSAR and MISRA C guidelines, responsible for vehicle safety.</li>
-          <li>Validated the software across 10 platforms for variations and triggers to meet safety guidelines.</li>
+          <li>Developed safety-critical automotive software under AUTOSAR and MISRA C guidelines.</li>
           <li>Implemented Emergency Start-Stop functionality for the Electronic Stability Program (ESP).</li>
-          <li>Performed regression testing (HIL/SIL) in a CI/CD environment, reducing bugs by 14%.</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="education">
-    <span class="section-tag">What I studied</span>
-    <h2>Education</h2>
-    <div class="timeline">
-      <div class="entry">
-        <h3>NC State University</h3>
-        <div class="role">Master of Science in Computer Networking</div>
-        <div class="meta">Raleigh, NC &middot; Aug 2021 &ndash; May 2023</div>
-        <ul>
-          <li>Coursework: Linux Networking, Design &amp; Analysis of Algorithms, Cloud Computing, Routed Network Design, Switched Network Management, Software Engineering, Internet Protocols, Database Management.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <h3>RNS Institute of Technology</h3>
-        <div class="role">Bachelor of Electronics and Communication</div>
-        <div class="meta">Karnataka, India &middot; Aug 2014 &ndash; May 2018</div>
-        <ul>
-          <li>Coursework: Operating Systems, Computer Networks, Wireless Networks.</li>
+          <li>Ran regression testing (HIL/SIL) in a CI/CD environment, reducing bugs by 14%.</li>
         </ul>
       </div>
     </div>
+    <p style="margin-top:1.5rem;color:var(--muted);">MS, Computer Networking &mdash; NC State University (2021&ndash;2023) &middot; BE, Electronics &amp; Communication &mdash; RNS Institute of Technology (2014&ndash;2018)</p>
   </section>
 
-  <section id="projects">
-    <span class="section-tag">Things I've built</span>
-    <h2>Projects</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>Migration as a Service</h3>
-        <p>Wrote a Python script emulating an SDN model-based controller (similar to OpenDaylight) that migrates user-specified VMs between clouds within the same subnet. Migration requirements are captured as YAML input and fed to an Ansible playbook that provisions tunneling infrastructure; a runtime model maintains system state at any point in time.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Jinja2</span><span class="tag">Ansible</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Migration-as-a-Service" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Example Bot</h3>
-        <p>Built a chatbot using Mattermost as the chat server, deployed with Kubernetes. Implemented a REST API to fetch detailed descriptions of user-requested libraries and APIs.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Mattermost</span><span class="tag">Ansible</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Library-Bot" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Switch Fabrics &amp; Server Load Balancing in Data Center</h3>
-        <p>Configured multi-tenant Leaf-Spine (Fat-tree) topology with inter-tenant communication. Implemented a BGP-EVPN control plane, ARP suppression, and per-tenant dynamic load balancing.</p>
-        <div class="tags"><span class="tag">Arista EOS</span><span class="tag">BGP-EVPN</span><span class="tag">MP-BGP</span><span class="tag">Load Balancer</span></div>
-      </div>
-
-      <div class="card">
-        <h3>Peer-to-Peer File Sharing with Centralized Index</h3>
-        <p>Developed a Registration Server and Peer Clients in Python using socket programming. Built a multi-threaded model that works with multiple peers to both upload and download the latest RFCs.</p>
-        <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Socket Programming</span><span class="tag">Python</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Peer_to_Peer_Network_with_Centralized_Index" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Database Management System for a Publishing House</h3>
-        <p>Designed a database system for a publishing house to facilitate online transactions and distributions, and worked to efficiently detect anomalies that caused transaction failures.</p>
-        <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">MariaDB</span></div>
-      </div>
-
-      <div class="card">
-        <h3>File Sharing between Remote Systems</h3>
-        <p>Created a secure FTP over UDP sockets using the Go-Back-N ARQ protocol in Python, then evaluated its performance and error-control capability during data transmission.</p>
-        <div class="tags"><span class="tag">Go-Back-N ARQ</span><span class="tag">UDP</span><span class="tag">Python</span></div>
-      </div>
-
-    </div>
-  </section>
-
+  <!-- SKILLS -->
   <section id="skills">
     <span class="section-tag">My toolkit</span>
     <h2>Skills</h2>
@@ -419,7 +627,7 @@
         <h3>Platforms &amp; Operating Systems</h3>
         <div class="chips">
           <span class="chip">Linux</span><span class="chip">Juniper Junos</span><span class="chip">Arista EOS</span>
-          <span class="chip">Cisco IOS</span><span class="chip">FRRouting (FRR)</span><span class="chip">AlmachOS</span>
+          <span class="chip">Cisco IOS / NX-OS</span><span class="chip">FRRouting (FRR)</span><span class="chip">AlmachOS</span>
         </div>
       </div>
       <div class="skill-block">
@@ -447,23 +655,16 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <span class="section-tag">Say hello</span>
     <h2>Contact</h2>
-    <p>Open to conversations about cloud networking, network automation, and infrastructure at scale.</p>
+    <p class="lead-copy">Open to conversations about large-scale data center networking, cloud connectivity, network automation, and AI infrastructure.</p>
     <div class="contact-links">
-      <a href="mailto:mohan.chamraj@gmail.com">
-        <span class="label">Email</span><span class="value">mohan.chamraj@gmail.com</span>
-      </a>
-      <a href="tel:+19842708892">
-        <span class="label">Phone</span><span class="value">984-270-8892</span>
-      </a>
-      <a href="https://www.linkedin.com/in/mohan-kumar-kc/" target="_blank" rel="noopener">
-        <span class="label">LinkedIn</span><span class="value">Connect with me</span>
-      </a>
-      <a href="#intro">
-        <span class="label">Location</span><span class="value">Seattle, WA</span>
-      </a>
+      <a href="mailto:mohan.chamraj@gmail.com"><span class="label">Email</span><span class="value">mohan.chamraj@gmail.com</span></a>
+      <a href="tel:+19842708892"><span class="label">Phone</span><span class="value">984-270-8892</span></a>
+      <a href="https://www.linkedin.com/in/mohan-kumar-kc/" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span class="value">mohan-kumar-kc</span></a>
+      <a href="https://github.com/Mohankkp" target="_blank" rel="noopener"><span class="label">GitHub</span><span class="value">Mohankkp</span></a>
     </div>
     <p class="fin">Fin :)</p>
   </section>
@@ -479,31 +680,33 @@
     a.addEventListener('click', () => sidebar.classList.remove('open'))
   );
 
-  // Active section highlighting
+  // Per-section background + active nav highlighting
   const links = document.querySelectorAll('#sidebar nav a');
-  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
   const bgMap = {
     intro:      '#312450',
-    strengths:  '#3a2f77',
-    experience: '#3e4094',
-    education:  '#493382',
-    projects:   '#5052b5',
-    skills:     '#5e42a6',
+    focus:      '#3a2f77',
+    cases:      '#3e4094',
+    labs:       '#453a8a',
+    deepdives:  '#5052b5',
+    approach:   '#5e42a6',
+    experience: '#4a3a8c',
+    skills:     '#6a3f86',
     contact:    '#953d75'
   };
+  const allSections = document.querySelectorAll('#main section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = '#' + entry.target.id;
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-        if (bgMap[entry.target.id]) document.body.style.backgroundColor = bgMap[entry.target.id];
+        const id = entry.target.id;
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        if (bgMap[id]) document.body.style.backgroundColor = bgMap[id];
       }
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
-  sections.forEach(s => s && observer.observe(s));
+  allSections.forEach(s => observer.observe(s));
 
   // Scroll-reveal animations
-  const revealTargets = document.querySelectorAll('section h2, .section-tag, #intro p, #intro .btn, .entry, .card, .skill-block, .certs, .contact-links a, .fin');
+  const revealTargets = document.querySelectorAll('section h2, .section-tag, #intro .role, #intro p, .metric, .btn-row, .card, .case, .dive, .principle, .problem, .entry, .skill-block, .certs, .contact-links a, .fin, .subhead');
   revealTargets.forEach(el => el.classList.add('reveal'));
   const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry, i) => {

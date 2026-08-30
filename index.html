@@ -260,15 +260,11 @@
 <aside id="sidebar">
   <nav>
     <a href="#intro">About</a>
-    <a href="#featured">Featured</a>
     <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#focus">What I Build</a>
-    <a href="#cases">Case Studies</a>
-    <a href="#labs">Design Labs</a>
-    <a href="#academic">Academic Projects</a>
-    <a href="#deepdives">Deep Dives</a>
-    <a href="#approach">Approach</a>
+    <a href="#work">Case Studies / Deep Dives</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="socials">
@@ -282,7 +278,7 @@
 <main id="main">
 
   <!-- HERO -->
-  <section id="intro">
+<section id="intro">
     <h2>Mohan Kumar</h2>
     <div class="role">Reliable &middot; Scalable &middot; Automated Networks</div>
     <p class="lead-copy">Welcome to my portfolio. I'm Mohan Kumar &mdash; a Network Infrastructure Engineer with 5+ years of experience in data center and cloud networking, BGP/EVPN-VXLAN, and network automation. I turn complex, repetitive network operations into reliable, scalable systems that deliver measurable results. Explore my work below.</p>
@@ -291,39 +287,7 @@
     </div>
   </section>
 
-  <!-- FEATURED -->
-  <section id="featured">
-    <span class="section-tag">Start here</span>
-    <h2>Featured Engineering</h2>
-    <p class="lead-copy">Three pieces of work that best show how I operate &mdash; scale, automation, and hands-on implementation.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">&#129351;</div>
-        <h3>Large-Scale Cloud Connectivity</h3>
-        <p>Scaling Direct Connect to 90+ locations with 100G/400G capacity engineering across global PoPs.</p>
-        <div class="tags"><span class="tag">Direct Connect</span><span class="tag">100G/400G</span><span class="tag">Capacity</span></div>
-        <a class="repo-link" href="#cases">See case study &rarr;</a>
-      </div>
-      <div class="card">
-        <div class="icon">&#129352;</div>
-        <h3>Network Automation Platform</h3>
-        <p>Event-driven Python/AWS automation that reclaims unused ports &mdash; recovery time cut from 6 hours to under 5 minutes.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Event-driven</span><span class="tag">AWS</span><span class="tag">APIs</span></div>
-        <a class="repo-link" href="#cases">See case study &rarr;</a>
-      </div>
-      <div class="card">
-        <div class="icon">&#129353;</div>
-        <h3>EVPN-VXLAN Production Lab</h3>
-        <p>Runnable Containerlab/FRR fabric &mdash; eBGP underlay, BGP-EVPN control plane, VXLAN, and failure tests. One-command deploy.</p>
-        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN-VXLAN</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
-      </div>
-    </div>
-    <p style="margin-top:1.4rem;"><a class="repo-link" href="#cases">View all case studies &rarr;</a></p>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
+<section id="experience">
     <span class="section-tag">Career progression</span>
     <h2>Experience</h2>
     <p class="lead-copy">Implementation &rarr; automation &rarr; scale &rarr; reliability &rarr; system design.</p>
@@ -369,11 +333,120 @@
         </ul>
       </div>
     </div>
-    <p style="margin-top:1.5rem;color:var(--muted);">MS, Computer Networking &mdash; NC State University (2021&ndash;2023) &middot; BE, Electronics &amp; Communication &mdash; RNS Institute of Technology (2014&ndash;2018)</p>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
+  <!-- EDUCATION -->
+  <section id="education">
+    <span class="section-tag">Academics</span>
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="entry">
+        <h3>NC State University</h3>
+        <div class="role">M.S., Computer Networking</div>
+        <div class="meta">Raleigh, NC &middot; Aug 2021 &ndash; May 2023</div>
+      </div>
+      <div class="entry">
+        <h3>RNS Institute of Technology</h3>
+        <div class="role">B.E., Electronics &amp; Communication</div>
+        <div class="meta">Karnataka, India &middot; Aug 2014 &ndash; May 2018</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <span class="section-tag">Selected work</span>
+    <h2>Projects</h2>
+    <div class="subhead">Network Design Labs</div>
+    <div class="grid">
+      <div class="card">
+        <h3>Global 3-Tier Data Center Network</h3>
+        <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
+        <pre class="diagram">      Global Backbone
+      /      |      \
+   DC-1    DC-2    DC-3
+    |        |       |
+  Spine    Spine   Spine
+  / | \    / | \   / | \
+ Leaf ...            Leaf</pre>
+        <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
+      </div>
+      <div class="card">
+        <h3>EVPN-VXLAN Fabric &mdash; runnable</h3>
+        <p>A 2-spine / 4-leaf fabric on Containerlab + FRR: eBGP underlay, BGP-EVPN control plane, VXLAN data plane, and scripted failure tests (spine loss, route withdrawal). Deploys in one command.</p>
+        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">Failure testing</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
+      </div>
+      <div class="card">
+        <h3>Global BGP Backbone</h3>
+        <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
+        <pre class="diagram">        AS 65000
+           |
+     Route Reflectors
+      /            \
+  Region-A       Region-B
+   / \             / \
+ PE   PE         PE   PE</pre>
+        <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
+      </div>
+      <div class="card">
+        <h3>400G AI Infrastructure Network</h3>
+        <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
+        <pre class="diagram">      Spine (non-blocking)
+       /     |     \
+    Leaf   Leaf   Leaf
+     |      |      |
+   GPU     GPU    GPU   (rail-optimized)</pre>
+        <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md" target="_blank" rel="noopener">Read the deep dive &rarr;</a>
+      </div>
+    </div>
+    <div class="subhead">Academic Projects</div>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Migration as a Service</h3>
+        <p>Wrote a Python script emulating an SDN model-based controller (similar to OpenDaylight) that migrates user-specified VMs between clouds within the same subnet. YAML input drives an Ansible playbook that provisions tunneling infrastructure; a runtime model maintains system state at any point in time.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Jinja2</span><span class="tag">Ansible</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Migration-as-a-Service" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Example Bot</h3>
+        <p>Built a chatbot with Mattermost as the chat server, deployed on Kubernetes. Implemented a REST API to fetch detailed descriptions of user-requested libraries and APIs.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Mattermost</span><span class="tag">Ansible</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Library-Bot" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Switch Fabrics &amp; Server Load Balancing in Data Center</h3>
+        <p>Configured multi-tenant Leaf-Spine (Fat-tree) topology with inter-tenant communication. Implemented a BGP-EVPN control plane, ARP suppression, and per-tenant dynamic load balancing.</p>
+        <div class="tags"><span class="tag">Arista EOS</span><span class="tag">BGP-EVPN</span><span class="tag">MP-BGP</span><span class="tag">Load Balancer</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Peer-to-Peer File Sharing with Centralized Index</h3>
+        <p>Developed a Registration Server and Peer Clients in Python using socket programming. Built a multi-threaded model that works with multiple peers to upload and download the latest RFCs.</p>
+        <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Socket Programming</span><span class="tag">Python</span></div>
+        <a class="repo-link" href="https://github.com/Mohankkp/Peer_to_Peer_Network_with_Centralized_Index" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Database Management System for a Publishing House</h3>
+        <p>Designed a database system for a publishing house to facilitate online transactions and distributions, and worked to efficiently detect anomalies that caused transaction failures.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">MariaDB</span></div>
+      </div>
+
+      <div class="card">
+        <h3>File Sharing between Remote Systems</h3>
+        <p>Created a secure FTP over UDP sockets using the Go-Back-N ARQ protocol in Python, then evaluated its performance and error-control capability during data transmission.</p>
+        <div class="tags"><span class="tag">Go-Back-N ARQ</span><span class="tag">UDP</span><span class="tag">Python</span></div>
+      </div>
+
+    </div>
+  </section>
+
+<section id="skills">
     <span class="section-tag">My toolkit</span>
     <h2>Skills</h2>
     <div class="skills-grid">
@@ -432,87 +505,12 @@
     </div>
   </section>
 
-  <!-- WHAT I BUILD -->
-  <section id="focus">
-    <span class="section-tag">My technical identity</span>
-    <h2>What I Build</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">&#127760;</div>
-        <h3>Large-Scale Networking</h3>
-        <ul class="mini">
-          <li>BGP / MP-BGP</li>
-          <li>EVPN-VXLAN</li>
-          <li>OSPF / IS-IS &middot; MPLS</li>
-          <li>Clos / Leaf-Spine fabrics</li>
-          <li>Data center networking</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon">&#9729;&#65039;</div>
-        <h3>Cloud Networking</h3>
-        <ul class="mini">
-          <li>AWS Direct Connect</li>
-          <li>Border / Internet Edge</li>
-          <li>Multi-region connectivity</li>
-          <li>PoP architecture</li>
-          <li>Customer connectivity</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon">&#129302;</div>
-        <h3>Network Automation</h3>
-        <ul class="mini">
-          <li>Python &middot; REST / NETCONF APIs</li>
-          <li>Ansible &middot; Jinja2</li>
-          <li>AWS Lambda &middot; EventBridge</li>
-          <li>Deployment orchestration</li>
-          <li>Zero Touch Provisioning</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon">&#128737;&#65039;</div>
-        <h3>Reliability</h3>
-        <ul class="mini">
-          <li>Automated network validation</li>
-          <li>Configuration drift detection</li>
-          <li>Failure prevention</li>
-          <li>Monitoring &amp; alerting</li>
-          <li>Rollback strategies</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon">&#128200;</div>
-        <h3>Capacity Engineering</h3>
-        <ul class="mini">
-          <li>Capacity forecasting</li>
-          <li>100G / 400G expansion</li>
-          <li>Port utilization analysis</li>
-          <li>Regional scaling</li>
-          <li>Growth planning</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="icon">&#129513;</div>
-        <h3>Systems Engineering</h3>
-        <ul class="mini">
-          <li>Event-driven architecture</li>
-          <li>Infrastructure orchestration</li>
-          <li>Observability</li>
-          <li>Production operations</li>
-          <li>Design for scale &amp; failure</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section id="cases">
+  <!-- CASE STUDIES / DEEP DIVES -->
+  <section id="work">
     <span class="section-tag">How I think</span>
-    <h2>Engineering Case Studies</h2>
-    <p class="lead-copy">Anonymized studies based on production-scale networking work. Diagrams are illustrative and contain no proprietary detail.</p>
-
-    <div class="case">
+    <h2>Case Studies &amp; Deep Dives</h2>
+    <p class="lead-copy">Anonymized studies based on production-scale work (diagrams are illustrative, no proprietary detail), plus deep dives on how I reason about networks.</p>
+<div class="case">
       <h3>Scaling Cloud Connectivity to 90+ Locations</h3>
       <div class="tags"><span class="tag">Direct Connect</span><span class="tag">Capacity</span><span class="tag">100G/400G</span><span class="tag">BGP</span></div>
       <span class="phase">Problem</span>
@@ -616,112 +614,9 @@ Production issue                PASS / FAIL --> Production</pre>
       <div class="impact"><strong>Impact:</strong> Turned "the fabric feels slow" into specific, reproducible root causes (ECMP hashing, MTU, drop behavior) on production-class 100G/400G hardware &mdash; directly relevant to modern AI-cluster networking.</div>
       <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/roce-ai-cluster" target="_blank" rel="noopener">View testbed design &rarr;</a>
     </div>
-  </section>
 
-  <!-- DESIGN LABS -->
-  <section id="labs">
-    <span class="section-tag">Design, not just configure</span>
-    <h2>Network Design Labs</h2>
-    <p class="lead-copy">One runnable lab you can deploy yourself, plus independent architecture studies &mdash; how I approach designing networks from first principles, beyond any single employer.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>Global 3-Tier Data Center Network</h3>
-        <p>A Clos / leaf-spine design with a global backbone tying multiple data centers together.</p>
-        <pre class="diagram">      Global Backbone
-      /      |      \
-   DC-1    DC-2    DC-3
-    |        |       |
-  Spine    Spine   Spine
-  / | \    / | \   / | \
- Leaf ...            Leaf</pre>
-        <div class="tags"><span class="tag">Clos</span><span class="tag">ECMP</span><span class="tag">BGP</span><span class="tag">EVPN/VXLAN</span><span class="tag">Failure domains</span></div>
-      </div>
-      <div class="card">
-        <h3>EVPN-VXLAN Fabric &mdash; runnable</h3>
-        <p>A 2-spine / 4-leaf fabric on Containerlab + FRR: eBGP underlay, BGP-EVPN control plane, VXLAN data plane, and scripted failure tests (spine loss, route withdrawal). Deploys in one command.</p>
-        <div class="tags"><span class="tag">Containerlab</span><span class="tag">FRR</span><span class="tag">EVPN</span><span class="tag">VXLAN</span><span class="tag">Failure testing</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">View lab on GitHub &rarr;</a>
-      </div>
-      <div class="card">
-        <h3>Global BGP Backbone</h3>
-        <p>eBGP/iBGP design with route reflectors, communities, and traffic engineering across regions.</p>
-        <pre class="diagram">        AS 65000
-           |
-     Route Reflectors
-      /            \
-  Region-A       Region-B
-   / \             / \
- PE   PE         PE   PE</pre>
-        <div class="tags"><span class="tag">eBGP/iBGP</span><span class="tag">Route reflectors</span><span class="tag">Communities</span><span class="tag">Traffic engineering</span></div>
-      </div>
-      <div class="card">
-        <h3>400G AI Infrastructure Network</h3>
-        <p>Architecture study for GPU-to-GPU communication &mdash; lossless Ethernet, RoCE, and low-oversubscription fabrics.</p>
-        <pre class="diagram">      Spine (non-blocking)
-       /     |     \
-    Leaf   Leaf   Leaf
-     |      |      |
-   GPU     GPU    GPU   (rail-optimized)</pre>
-        <div class="tags"><span class="tag">400G/800G</span><span class="tag">RoCE</span><span class="tag">Lossless Ethernet</span><span class="tag">Congestion control</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ai-gpu-network-design.md" target="_blank" rel="noopener">Read the deep dive &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACADEMIC PROJECTS -->
-  <section id="academic">
-    <span class="section-tag">Foundations</span>
-    <h2>Academic Projects</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>Migration as a Service</h3>
-        <p>Wrote a Python script emulating an SDN model-based controller (similar to OpenDaylight) that migrates user-specified VMs between clouds within the same subnet. YAML input drives an Ansible playbook that provisions tunneling infrastructure; a runtime model maintains system state at any point in time.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Jinja2</span><span class="tag">Ansible</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Migration-as-a-Service" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Example Bot</h3>
-        <p>Built a chatbot with Mattermost as the chat server, deployed on Kubernetes. Implemented a REST API to fetch detailed descriptions of user-requested libraries and APIs.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Mattermost</span><span class="tag">Ansible</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Library-Bot" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Switch Fabrics &amp; Server Load Balancing in Data Center</h3>
-        <p>Configured multi-tenant Leaf-Spine (Fat-tree) topology with inter-tenant communication. Implemented a BGP-EVPN control plane, ARP suppression, and per-tenant dynamic load balancing.</p>
-        <div class="tags"><span class="tag">Arista EOS</span><span class="tag">BGP-EVPN</span><span class="tag">MP-BGP</span><span class="tag">Load Balancer</span></div>
-      </div>
-
-      <div class="card">
-        <h3>Peer-to-Peer File Sharing with Centralized Index</h3>
-        <p>Developed a Registration Server and Peer Clients in Python using socket programming. Built a multi-threaded model that works with multiple peers to upload and download the latest RFCs.</p>
-        <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Socket Programming</span><span class="tag">Python</span></div>
-        <a class="repo-link" href="https://github.com/Mohankkp/Peer_to_Peer_Network_with_Centralized_Index" target="_blank" rel="noopener">View on GitHub &rarr;</a>
-      </div>
-
-      <div class="card">
-        <h3>Database Management System for a Publishing House</h3>
-        <p>Designed a database system for a publishing house to facilitate online transactions and distributions, and worked to efficiently detect anomalies that caused transaction failures.</p>
-        <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">MariaDB</span></div>
-      </div>
-
-      <div class="card">
-        <h3>File Sharing between Remote Systems</h3>
-        <p>Created a secure FTP over UDP sockets using the Go-Back-N ARQ protocol in Python, then evaluated its performance and error-control capability during data transmission.</p>
-        <div class="tags"><span class="tag">Go-Back-N ARQ</span><span class="tag">UDP</span><span class="tag">Python</span></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DEEP DIVES -->
-  <section id="deepdives">
-    <span class="section-tag">Depth over breadth</span>
-    <h2>Technical Deep Dives</h2>
-    <p class="lead-copy">Short write-ups that trace a protocol or failure end to end &mdash; how I reason about networks, not how to configure them.</p>
-    <div class="dive-list">
+    <div class="subhead">Technical Deep Dives</div>
+<div class="dive-list">
       <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/bgp-session-troubleshooting.md"><span class="dot">&#9656;</span><span><span class="t">Troubleshooting a BGP session that won't establish</span><span class="s">Physical &rarr; ARP &rarr; TCP/179 &rarr; OPEN &rarr; capabilities &rarr; routes &rarr; policy</span></span></a>
       <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/evpn-vxlan-packet-journey.md"><span class="dot">&#9656;</span><span><span class="t">EVPN-VXLAN: from packet ingress to remote VTEP</span><span class="s">The full encapsulation and lookup journey across the fabric</span></span></a>
       <a class="dive" target="_blank" rel="noopener" href="https://github.com/Mohankkp/My-Portfolio/blob/main/writeups/ecmp-clos.md"><span class="dot">&#9656;</span><span><span class="t">How ECMP actually distributes traffic in a Clos network</span><span class="s">Hashing, flow pinning, and polarization in leaf-spine</span></span></a>
@@ -733,31 +628,7 @@ Production issue                PASS / FAIL --> Production</pre>
     <p style="margin-top:1.6rem;"><a class="repo-link" href="https://github.com/Mohankkp/My-Portfolio/tree/main/labs/containerlab-evpn-vxlan" target="_blank" rel="noopener">&#9656; Runnable lab: EVPN-VXLAN fabric on Containerlab + FRR &rarr;</a></p>
   </section>
 
-  <!-- APPROACH: principles + problems -->
-  <section id="approach">
-    <span class="section-tag">How I operate</span>
-    <h2>Engineering Approach</h2>
-
-    <div class="subhead">Principles I follow</div>
-    <div class="principle-grid">
-      <div class="principle"><h4>Automate repetitive work</h4><p>I look for operational workflows where humans repeatedly reconcile desired state against actual network state &mdash; and turn those workflows into software.</p></div>
-      <div class="principle"><h4>Design for failure</h4><p>I start a design by asking what happens when a link, device, control-plane session, or an entire PoP disappears &mdash; then bound the blast radius so recovery is predictable.</p></div>
-      <div class="principle"><h4>Measure before scaling</h4><p>I base capacity decisions on real utilization, growth trends, and N-1 failure scenarios &mdash; not on assumptions about how much headroom "feels" safe.</p></div>
-      <div class="principle"><h4>Make networks observable</h4><p>If I can't explain why traffic took a given path, I treat that as a gap in the system, not a mystery to live with.</p></div>
-      <div class="principle"><h4>Prevent over detect</h4><p>I'd rather a bad change fail a validation gate before turn-up than page someone after a customer notices. The best incident is the one that never ships.</p></div>
-    </div>
-
-    <div class="subhead">Problems I'm interested in solving</div>
-    <div class="problem-grid">
-      <div class="problem"><h4>Large-scale network infrastructure</h4><p>How do we build networks that scale to millions of endpoints while keeping performance predictable?</p></div>
-      <div class="problem"><h4>Network automation</h4><p>How can software eliminate repetitive operations and remove human error from the critical path?</p></div>
-      <div class="problem"><h4>AI infrastructure networking</h4><p>How should network architectures evolve for increasingly distributed GPU workloads?</p></div>
-      <div class="problem"><h4>Global backbone engineering</h4><p>How do we engineer connectivity and traffic across a globally distributed infrastructure?</p></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
+<section id="contact">
     <span class="section-tag">Say hello</span>
     <h2>Contact</h2>
     <p class="lead-copy">Open to conversations about large-scale data center networking, cloud connectivity, network automation, and AI infrastructure.</p>
@@ -783,15 +654,11 @@ Production issue                PASS / FAIL --> Production</pre>
   const links = document.querySelectorAll('#sidebar nav a');
   const bgMap = {
     intro:      '#312450',
-    featured:   '#382c5c',
-    experience: '#433060',
-    skills:     '#523463',
-    focus:      '#643a5d',
-    cases:      '#743e4f',
-    labs:       '#7f4339',
-    academic:   '#834f28',
-    deepdives:  '#805a1c',
-    approach:   '#7a6216',
+    experience: '#433063',
+    education:  '#593765',
+    projects:   '#6e3d5a',
+    skills:     '#7d4444',
+    work:       '#7f5a20',
     contact:    '#736a14'
   };
   const allSections = document.querySelectorAll('#main section');
